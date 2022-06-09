@@ -1,16 +1,41 @@
-# Vue 3 + TypeScript + Vite
+# 一个简单的仿 12306 首页的静态页面
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## note:
 
-## Recommended IDE Setup
+- 这个项目要求你必须已经安装好了 nodejs 环境(>=12)
+- 且已经安装好了 vue-cli 脚手架工具(>=5.0)
+- 在一切无误后边可以进行本地测试和打包部署了
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+```sh
+cd railway-page
 
-## Type Support For `.vue` Imports in TS
+# 安装项目依赖
+npm install
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+# 启动开发预览服务器
+npm run dev
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+# 打包构建
+npm run build
+```
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+- 此外你也可以修改 `package.json` 文件下的 `scripts` 区域以更改指令
+
+## 项目目录结构
+
+```txt
+C:\USERS\33306\DOCUMENTS\VS_CODE\练习\VUE3\RAILWAY-PAGE\SRC
+├───assets              # 静态资源
+│   ├───img
+│   └───scss            # 默认全局样式
+└───components          # 组件文件夹
+    ├───announcement    # 底部通知想组件
+    ├───carousel        # 轮播图
+    ├───contentBody     # 主体部分包裹组件
+    ├───helpBar         # 右侧帮助栏
+    ├───pageFooter      # 页脚
+    ├───pageHeader      # 页首
+    ├───railwayLine     # 铁路旅游推荐组件
+    ├───serviceBrand    # 服务板块大图推荐
+    └───serviceList     # 服务列表展示
+```
