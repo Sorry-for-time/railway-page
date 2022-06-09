@@ -174,7 +174,11 @@ const qrCodeImgUrls: Array<{
       padding: 9px;
       font-size: 13px;
       color: black;
-      background-color: white;
+      background: scroll no-repeat url("imgs/footer/other/10055.png");
+      background-position: bottom right;
+      object-fit: contain;
+      background-size: 86%;
+      filter: brightness(0.95);
       border: 1px solid hsla(0, 0%, 50%, 0.39);
 
       // 对话框拖尾效果
