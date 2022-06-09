@@ -2,7 +2,14 @@
   <section>
     <ol>
       <li v-for="(value, index) in serviceList" :key="index">
-        <span></span>
+        <span>
+          <!-- 分割线图片, 且最后一张不加载出来 -->
+          <img
+            src="/imgs/service-list/split-line.png"
+            alt="这个不可能加载不出来(理直气壮)"
+            v-if="index !== serviceList.length - 1"
+          />
+        </span>
         <a>{{ value }}</a>
       </li>
     </ol>
@@ -47,6 +54,21 @@ section {
         margin: 0 auto;
         margin-top: 33px;
         background: url("imgs/service-list/service.png") no-repeat;
+        position: relative;
+        transition: 100ms ease-out;
+
+        &:hover {
+          transform: scale(1.2);
+          filter: brightness(1.1);
+          cursor: pointer;
+        }
+
+        img {
+          position: absolute;
+          height: 50px;
+          right: -60px;
+          top: 10px;
+        }
       }
 
       a {

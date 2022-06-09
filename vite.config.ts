@@ -1,6 +1,9 @@
 import { join } from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 /**
  * @description 返回项目下对应文件夹路径绝对值
@@ -13,7 +16,16 @@ const aliasPath: Function = (ProjectDirectoryName: string): string => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    // element-ui 按需引入配置
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
 
   resolve: {
     // 设置路径别名
