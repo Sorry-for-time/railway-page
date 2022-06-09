@@ -24,7 +24,6 @@ npm run build
 ## 项目目录结构
 
 ```txt
-C:\USERS\33306\DOCUMENTS\VS_CODE\练习\VUE3\RAILWAY-PAGE\SRC
 ├───assets              # 静态资源
 │   ├───img
 │   └───scss            # 默认全局样式
