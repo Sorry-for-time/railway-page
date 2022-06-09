@@ -18,12 +18,20 @@ body {
 
 // 设置 webkit 内核系浏览器的默认滚动条样式
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
   height: 10px;
+  background-color: hsla(0, 0%, 23%, 0.342);
+  border-left: 1px solid hsla(28, 12%, 73%, 0.356);
 }
 
 ::-webkit-scrollbar-thumb {
+  animation: scroll-color 1s infinite;
   background: scroll center
-    linear-gradient(to bottom, hsl(216, 100%, 75%), hsl(259, 100%, 68%));
-  border-radius: 5px;
+    linear-gradient(
+      120deg,
+      hsl(350, 81%, 69%) 0%,
+      hsl(216, 60%, 53%) 40%,
+      hsl(180, 43%, 55%) 70%,
+      hsl(259, 62%, 46%) 100%
+    );
 }
