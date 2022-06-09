@@ -20,7 +20,7 @@ const imgList: Array<string> = reactive([
 <style lang="scss" scoped>
 .img-brand-list {
   height: 360px;
-  width: 96%;
+  width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 590px 590px;

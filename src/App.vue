@@ -1,23 +1,61 @@
 <template>
   <!-- 页首 -->
-  <PageHeader />
-  <Carousel />
-  <ServiceListVue />
-  <ServiceBrand />
-  <RailWayLine />
+  <Suspense>
+    <template #default>
+      <PageHeader />
+    </template>
+  </Suspense>
+
+  <Suspense>
+    <template #default>
+      <Carousel />
+    </template>
+  </Suspense>
+
+  <Suspense>
+    <template #default>
+      <ContentBody />
+    </template>
+  </Suspense>
+
+  <Suspense>
+    <template #default>
+      <PageFooter />
+    </template>
+  </Suspense>
+
+  <Suspense>
+    <template #default>
+      <HelpBar />
+    </template>
+  </Suspense>
 </template>
 
 <script setup lang="ts">
-import PageHeader from "@/components/pageHeader/PageHeader.vue";
-import Carousel from "@/components/carousel/Carousel.vue";
-import ServiceListVue from "@/components/serviceList/ServiceList.vue";
-import ServiceBrand from "@/components/serviceBrand/ServiceBrand.vue";
-import RailWayLine from "@/components/railwayLine/RailWayLine.vue";
+import { defineAsyncComponent } from "vue";
+
+const PageHeader = defineAsyncComponent(
+  () => import("@/components/pageHeader/PageHeader.vue")
+);
+const Carousel = defineAsyncComponent(
+  () => import("@/components/carousel/Carousel.vue")
+);
+const ContentBody = defineAsyncComponent(
+  () => import("@/components/contentBody/ContentBody.vue")
+);
+
+const PageFooter = defineAsyncComponent(
+  () => import("@/components/pageFooter/PageFooter.vue")
+);
+
+const HelpBar = defineAsyncComponent(
+  () => import("@/components/helpBar/HelpBar.vue")
+);
 </script>
 
 <style lang="scss">
 #app {
-  width: 100vw;
+  width: 100%;
   background: white;
 }
 </style>
