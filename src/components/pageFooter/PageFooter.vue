@@ -34,19 +34,23 @@
 
     <!-- 版权信息 -->
     <div class="bottom">
-      <p>
-        版权所有©2008-2022 中国铁道科学研究院集团有限公司
-        技术支持：铁旅科技有限公司
-      </p>
-      <p>
-        <img
-          src="imgs/footer/other/10018.png"
-          alt="loading..."
-          style="height: 15px"
-        />
-        京公网安备&nbsp; 11010802038392号 &nbsp;|&nbsp; 京ICP备05020493号-4 |
-        ICP证：&nbsp; &nbsp;京B2-20202537
-      </p>
+      <section>
+        <p>
+          版权所有©2008-2022&nbsp;&nbsp;
+          中国铁道科学研究院集团有限公司&nbsp;&nbsp; 技术支持：铁旅科技有限公司
+        </p>
+
+        <p>
+          <img
+            src="imgs/footer/other/10018.png"
+            alt="loading..."
+            style="height: 15px"
+          />
+          京公网安备&nbsp; 11010802038392号 &nbsp;|&nbsp; 京ICP备05020493号-4 |
+          &nbsp;&nbsp;ICP证：&nbsp; &nbsp;京B2-20202537
+        </p>
+      </section>
+      <img src="/imgs/footer/other/footer-slh.jpg" alt="" />
     </div>
   </footer>
 </template>
@@ -195,15 +199,34 @@ const qrCodeImgUrls: Array<{
     width: 100%;
     height: calc(100% - 194px);
     background-color: hsl(0, 0%, 40%);
+    display: grid;
+    grid-template-columns: 570px 160px;
+    gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
 
-    p {
-      width: 100%;
-      display: inline-block;
-      margin-top: 15px;
-      text-align: center;
-      font-size: 13px;
-      color: hsl(0, 0%, 76%);
-      font-weight: 500;
+    section {
+      height: 100%;
+      display: grid;
+      align-items: center;
+
+      p {
+        flex: 100%;
+        text-align: center;
+        width: 100%;
+        font-size: 13px;
+        color: hsl(0, 0%, 76%);
+        font-weight: 500;
+
+        &:first-child {
+          margin-top: 10px;
+        }
+
+        &:last-child {
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 }
