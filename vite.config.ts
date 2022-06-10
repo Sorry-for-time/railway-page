@@ -32,6 +32,7 @@ export default defineConfig({
     alias: {
       "@": aliasPath("src"),
       "@node": aliasPath("node_modules"),
+      "@scss": aliasPath("scss"),
     },
   },
 

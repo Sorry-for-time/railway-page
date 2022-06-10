@@ -1,6 +1,8 @@
 import { RouteRecordRaw } from "vue-router";
 
 const Home = () => import("@/pages/home/Home.vue");
+const BusinessService = () => import("@/pages/business/BusinessService.vue");
+
 const NotFoundPage = () => import("@/pages/error/NotFoundPage.vue");
 
 export const routes: RouteRecordRaw[] = [
@@ -10,12 +12,24 @@ export const routes: RouteRecordRaw[] = [
     redirect: { name: "home" },
   },
 
+  // 主页
   {
     name: "home",
     path: "/home",
     component: Home,
     meta: {
       title: "中国铁路12306",
+      needAuth: false,
+    },
+  },
+
+  // 商务服务
+  {
+    name: "businessService",
+    path: "/business-service",
+    component: BusinessService,
+    meta: {
+      title: "商务服务",
       needAuth: false,
     },
   },

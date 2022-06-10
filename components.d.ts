@@ -30,6 +30,8 @@ declare module '@vue/runtime-core' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     HelpBar: typeof import('./src/components/helpBar/HelpBar.vue')['default']
+    LoadingBiggerHint: typeof import('./src/components/common/loading-hint/LoadingBiggerHint.vue')['default']
+    LoadingCommonHint: typeof import('./src/components/common/loading-hint/LoadingCommonHint.vue')['default']
     NotFoundPage: typeof import('./src/components/error/NotFoundPage.vue')['default']
     PageFooter: typeof import('./src/components/pageFooter/PageFooter.vue')['default']
     PageHeader: typeof import('./src/components/pageHeader/PageHeader.vue')['default']

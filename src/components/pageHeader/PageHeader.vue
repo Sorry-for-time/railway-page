@@ -39,7 +39,15 @@
 
     <!-- 主要分类 -->
     <nav class="type">
-      <span v-for="(value, index) in majorCategory" :key="index">
+      <span
+        v-for="(value, index) in majorCategory"
+        :key="index"
+        :class="{ 'when-active': index === currentActive }"
+        @click="
+          goPath(value);
+          changeCurrentActive(index);
+        "
+      >
         {{ value }}
       </span>
     </nav>
@@ -48,8 +56,14 @@
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const searchValue = ref("");
+const currentActive = ref(0);
+
+function changeCurrentActive(index: number): void {
+  currentActive.value = index;
+}
 
 /**
  * @description 根据已经输入内容进行搜索
@@ -72,6 +86,44 @@ const majorCategory: Array<string> = reactive([
   "出行指南",
   "信息查询",
 ]);
+
+const router = useRouter();
+
+/**
+ * @description 跳转到指定的页面
+ */
+function goPath(targetName: string): void {
+  let path: string = "/";
+  switch (targetName) {
+    case "首页":
+      path = "/home";
+      break;
+    case "车票":
+      path = "/ticket";
+      break;
+    case "团购服务":
+      path = "/group-service";
+      break;
+    case "会员服务":
+      path = "/vip-service";
+      break;
+    case "站车服务":
+      path = "station-car-service";
+      break;
+    case "商旅服务":
+      path = "/business-service";
+      break;
+    case "出行指南":
+      path = "travel-guide";
+      break;
+    case "信息查询":
+      path = "detail-search";
+      break;
+    default:
+      break;
+  }
+  router.push(path);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -182,7 +234,7 @@ header {
         background-color: hsl(214, 83%, 57%);
       }
 
-      &:nth-child(1) {
+      &.when-active {
         background-color: hsl(215, 77%, 52%);
       }
     }
