@@ -4,7 +4,6 @@
     <template #default>
       <PageHeader />
     </template>
-    <template #fallback> </template>
   </Suspense>
 
   <!-- 内容主体 -->
@@ -27,7 +26,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent, ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
-import LoadingBiggerHint from "@/components/common/loading-hint/LoadingBiggerHint.vue";
 import LoadingCommonHint from "@/components/common/loading-hint/LoadingCommonHint.vue";
 
 const PageHeader = defineAsyncComponent(
