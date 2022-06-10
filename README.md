@@ -21,6 +21,17 @@ npm run build
 
 - 此外你也可以修改 `package.json` 文件下的 `scripts` 区域以更改指令
 
+## 基本展示
+
+<div align="center">
+<h3>主页</h3>
+<img src=".assets/main-page.jpeg" alt="图片貌似没加载出来..." width="500px">
+<h3>侧边栏</h3>
+<img src=".assets/side-bar.png" alt="图片貌似没加载出来..." width="500px">
+<h3>错误链接处理</h3>
+<img src=".assets/error-page-config.png" alt="图片貌似没加载出来..." width="500px">
+</div>
+
 ## 项目目录结构
 
 ```txt
