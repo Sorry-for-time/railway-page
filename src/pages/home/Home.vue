@@ -17,8 +17,9 @@
     <template #fallback>
       <LoadingBiggerHint
         loading-msg="PLEASE WAIT SIGNAL🐌"
+        liner-angle="-45deg"
         liner-color-start="pink"
-        liner-color-end="purple"
+        liner-color-end="cyan"
         font-hint-size="6rem"
       />
     </template>
