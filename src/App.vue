@@ -6,24 +6,17 @@
     </template>
   </Suspense>
 
-  <Suspense>
-    <template #default>
-      <Carousel />
-    </template>
-  </Suspense>
+  <!-- 内容主体 -->
+  <router-view />
 
-  <Suspense>
-    <template #default>
-      <ContentBody />
-    </template>
-  </Suspense>
-
+  <!-- 页脚 -->
   <Suspense>
     <template #default>
       <PageFooter />
     </template>
   </Suspense>
 
+  <!-- 右侧工具栏 -->
   <Suspense>
     <template #default>
       <HelpBar />
@@ -37,17 +30,12 @@ import { defineAsyncComponent } from "vue";
 const PageHeader = defineAsyncComponent(
   () => import("@/components/pageHeader/PageHeader.vue")
 );
-const Carousel = defineAsyncComponent(
-  () => import("@/components/carousel/Carousel.vue")
-);
 const ContentBody = defineAsyncComponent(
   () => import("@/components/contentBody/ContentBody.vue")
 );
-
 const PageFooter = defineAsyncComponent(
   () => import("@/components/pageFooter/PageFooter.vue")
 );
-
 const HelpBar = defineAsyncComponent(
   () => import("@/components/helpBar/HelpBar.vue")
 );

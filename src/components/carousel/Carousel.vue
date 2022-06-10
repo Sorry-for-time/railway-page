@@ -1,17 +1,26 @@
 <template>
-  <div class="outer">
+  <div class="container">
     <!-- 轮播图 -->
     <el-carousel trigger="click" height="490px">
       <el-carousel-item v-for="(item, key) in imgList" :key="key">
         <img :src="item" alt="" />
       </el-carousel-item>
     </el-carousel>
-    <div class="tool-frame"></div>
+
+    <!-- 搜索栏工具 -->
+    <div class="fix-tool">
+      <SearchTools />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { defineAsyncComponent } from "vue";
 import { reactive } from "vue";
+
+const SearchTools = defineAsyncComponent(
+  () => import("@/components/searchTools/SearchTool.vue")
+);
 
 const imgList = reactive([
   "imgs/banner/banner10.jpg",
@@ -21,27 +30,18 @@ const imgList = reactive([
 </script>
 
 <style lang="scss" scoped>
-.outer {
+.container {
   position: relative;
 
-  .tool-frame {
-    z-index: 233;
+  .fix-tool {
     position: absolute;
-    left: 200px;
-    top: 50px;
-    width: 515px;
-    height: 352px;
-    outline: none;
-    backdrop-filter: blur(10px);
-    background: scroll center no-repeat
-      linear-gradient(hsla(300, 98%, 32%, 0.151), hsla(240, 100%, 42%, 0.151));
-    box-shadow: 0 0 6px hsla(0, 0%, 5%, 0.459),
-      0 0 5px 2px hsla(0, 0%, 25%, 0.89) inset;
-    border: 1px solid hsla(0, 0%, 41%, 0.253);
-    border-radius: 12px;
+    left: 360px;
+    top: 45px;
   }
 }
+</style>
 
+<style lang="scss" scoped>
 .el-carousel__item img {
   color: #475669;
   opacity: 0.75;
