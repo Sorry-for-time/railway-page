@@ -4,6 +4,7 @@
     <template #default>
       <PageHeader />
     </template>
+    <template #fallback> </template>
   </Suspense>
 
   <!-- 内容主体 -->
@@ -14,18 +15,20 @@
     <template #default>
       <PageFooter />
     </template>
+    <template #fallback>
+      <LoadingCommonHint />
+    </template>
   </Suspense>
 
   <!-- 右侧工具栏 -->
-  <Suspense>
-    <template #default>
-      <HelpBar />
-    </template>
-  </Suspense>
+  <HelpBar v-show="isNeedShowSideBar" />
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, ref, watchEffect } from "vue";
+import { useRoute } from "vue-router";
+import LoadingBiggerHint from "@/components/common/loading-hint/LoadingBiggerHint.vue";
+import LoadingCommonHint from "@/components/common/loading-hint/LoadingCommonHint.vue";
 
 const PageHeader = defineAsyncComponent(
   () => import("@/components/pageHeader/PageHeader.vue")
@@ -39,6 +42,17 @@ const PageFooter = defineAsyncComponent(
 const HelpBar = defineAsyncComponent(
   () => import("@/components/helpBar/HelpBar.vue")
 );
+
+const route = useRoute();
+const isNeedShowSideBar = ref(true);
+watchEffect(() => {
+  // 监听路由信息, 决定是否展示侧边栏工具
+  if (!route.path.includes("home")) {
+    isNeedShowSideBar.value = false;
+  } else {
+    isNeedShowSideBar.value = true;
+  }
+});
 </script>
 
 <style lang="scss">

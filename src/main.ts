@@ -8,6 +8,7 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import "@/assets/scss/base.scss";
 import "@node/font-awesome/scss/font-awesome.scss";
 import "@node/nprogress/nprogress.css";
+import "@scss/rewrite-plugin-style/rewrite-nprogress.scss"
 
 const app = createApp(App);
 app.use(router);
