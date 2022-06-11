@@ -7,7 +7,15 @@
   </Suspense>
 
   <!-- 内容主体 -->
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <Transition name="fade">
+      <KeepAlive>
+        <div :key="$route.path">
+          <component :is="Component" />
+        </div>
+      </KeepAlive>
+    </Transition>
+  </router-view>
 
   <!-- 页脚 -->
   <Suspense>
@@ -57,5 +65,43 @@ watchEffect(() => {
 #app {
   width: 100%;
   background: white;
+}
+</style>
+
+<style lang="scss" scoped>
+// 路由组件入场动画
+@keyframes fade {
+  from {
+    filter: opacity(0);
+  }
+  to {
+    filter: opacity(1);
+  }
+}
+
+// 路由组件离场动画
+@keyframes fade-pined {
+  from {
+    // 使元素不占据页面宽度
+    position: fixed;
+    top: 120px;
+    right: 0%;
+    left: 0%;
+    filter: opacity(1);
+  }
+  to {
+    position: fixed;
+    top: 120px;
+    right: 0%;
+    left: 0%;
+    filter: opacity(0);
+  }
+}
+
+.fade-enter-active {
+  animation: fade 300ms ease-out forwards;
+}
+.fade-leave-active {
+  animation: fade-pined 280ms ease-out forwards;
 }
 </style>
