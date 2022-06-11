@@ -2,21 +2,21 @@
   <div class="tool-frame">
     <!-- 导航栏 -->
     <nav class="left-bar">
-      <div class="item">
-        <div class="full when-active">
+      <div class="item" @click="changeSelectItem('ticket')">
+        <div class="full" :class="{ 'when-active': currentShow === 'ticket' }">
           <span class="fa fa-train">&nbsp;车票</span>
         </div>
       </div>
 
-      <div class="item">
-        <div class="full">
-          <span class="fa fa-train">&nbsp;常用查询</span>
+      <div class="item" @click="changeSelectItem('search')">
+        <div class="full" :class="{ 'when-active': currentShow === 'search' }">
+          <span class="fa fa-file-text">&nbsp;常用查询</span>
         </div>
       </div>
 
-      <div class="item">
-        <div class="full">
-          <span class="fa fa-train">&nbsp;订餐</span>
+      <div class="item" @click="changeSelectItem('book')">
+        <div class="full" :class="{ 'when-active': currentShow === 'book' }">
+          <span class="fa fa-coffee">&nbsp;订餐</span>
         </div>
       </div>
     </nav>
@@ -39,6 +39,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 const value1 = ref("");
+const currentShow = ref("ticket");
+function changeSelectItem(str: string): void {
+  currentShow.value = str;
+}
 </script>
 
 <style lang="scss" scoped>
