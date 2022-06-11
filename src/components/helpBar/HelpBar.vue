@@ -12,11 +12,16 @@
 
     <div
       class="show-qrcode"
-      @mouseenter="isQrCodeAreaShow = true"
-      @mouseleave="isQrCodeAreaShow = false"
+      @mouseenter.stop="isQrCodeAreaShow = true"
+      @mouseleave.stop="isQrCodeAreaShow = false"
     >
       <transition name="code-show">
-        <div class="show" v-show="isQrCodeAreaShow">
+        <div
+          class="show"
+          v-show="isQrCodeAreaShow"
+          @mouseenter.stop="isQrCodeAreaShow = false"
+          @mouseleave.stop="isQrCodeAreaShow = false"
+        >
           <h3>铁路12306</h3>
           <section class="frame">
             <img src="imgs/footer/qr-codes/10018.png" alt="" />
@@ -50,6 +55,7 @@ function close() {
 
 <style lang="scss" scoped>
 nav {
+  z-index: 999;
   position: fixed;
   width: 50px;
   top: 20vh;
@@ -213,6 +219,6 @@ nav {
 }
 
 .code-show-leave-active {
-  animation: fluent-show 100ms ease-in reverse forwards;
+  animation: fluent-show 120ms ease-in reverse forwards;
 }
 </style>
