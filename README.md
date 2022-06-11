@@ -1,5 +1,12 @@
 # 一个简单的仿 12306 首页的静态页面
 
+## 当前版本添加功能
+
+- 主页面路由组件的切换的过渡效果(视觉上更加友好)
+- 可复用的多彩背景待开发提示页面组件
+- 更加视觉友好的错误页提示
+- 部分样式优化
+
 ## note:
 
 - 这个项目要求你必须已经安装好了 nodejs 环境(>=12)
@@ -25,14 +32,19 @@ npm run build
 
 <div align="center">
 <h3>主页</h3>
-<img src=".assets/main-page.jpeg" alt="图片貌似没加载出来..." width="500px">
-<h3>侧边栏</h3>
-<img src=".assets/side-bar.png" alt="图片貌似没加载出来..." width="500px">
+<img src=".assets/main-page.jpeg" alt="图片貌似没加载出来..." width="80%" />
+
+<h3>侧边栏效果</h3>
+<img src=".assets/right-side-bar.png" alt="图片貌似没加载出来..." width="80%" />
+
+<h3>待开发页面提示</h3>
+<img src=".assets/wait-develop-hint.png" alt="图片貌似没加载出来..." width="80%" />
+
 <h3>错误链接处理</h3>
-<img src=".assets/error-page-config.png" alt="图片貌似没加载出来..." width="500px">
+<img src=".assets/not-found-hint.png" alt="图片貌似没加载出来..." width="80%" />
 </div>
 
-## 项目目录结构
+## src 目录结构
 
 ```txt
 ├───assets              # 静态资源
