@@ -2,7 +2,7 @@
   <header>
     <div class="header-show">
       <!-- logo -->
-      <img src="/imgs/logo.jpg" alt="图片貌似没加载出来???🙃" />
+      <img class="logo" src="/imgs/logo.jpg" alt="图片貌似没加载出来???🙃" />
 
       <!-- 右侧区域 -->
       <div class="header-right">
@@ -92,9 +92,9 @@ const router = useRouter();
 /**
  * @description 跳转到指定的页面
  */
-function goPath(targetName: string): void {
+function goPath(targetPathMapName: string): void {
   let path: string = "/";
-  switch (targetName) {
+  switch (targetPathMapName) {
     case "首页":
       path = "/home";
       break;
@@ -132,27 +132,60 @@ header {
   height: 120px;
   display: grid;
   grid-template-rows: 80px 40px;
+  grid-template-columns: 1fr;
   justify-items: center;
   background-color: white;
   overflow: hidden;
 
+  @media screen and (max-width: 1300px) {
+    height: 160px;
+    grid-template-rows: 120px 40px;
+
+    .header-show {
+      width: 98%;
+    }
+  }
+
+  @media screen and (max-width: 1185px) {
+    height: 120px;
+    grid-template-rows: 80px 40px;
+
+    .header-show {
+      .header-right {
+        grid-template-columns: 1fr !important;
+
+        .search-container {
+          width: 100%;
+        }
+        .help-message {
+          display: none;
+        }
+      }
+    }
+  }
+
   .header-show {
-    width: calc(100% - 700px);
+    width: 60%;
     display: grid;
     grid-template-columns: 200px calc(100% - 200px);
     align-items: center;
+    justify-content: center;
+    justify-items: center;
 
     .header-right {
       height: 100%;
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      justify-items: center;
       align-items: center;
 
       // 搜索框和按钮
       .search-container {
-        height: 30px;
+        text-align: right;
         margin-left: 40px;
+        height: 30px;
         width: 100%;
 
         input[type="text"] {
@@ -161,7 +194,7 @@ header {
           color: black;
           border: none;
           outline: none;
-          width: 350px;
+          width: calc(100% - 50px);
           height: 28px;
           box-shadow: 0 0 2px gray;
 
@@ -188,6 +221,8 @@ header {
 
       // 帮助信息
       .help-message {
+        margin-left: 20px;
+
         nav {
           display: inline-block;
           span {
