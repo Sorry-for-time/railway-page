@@ -108,16 +108,16 @@ function goPath(targetName: string): void {
       path = "/vip-service";
       break;
     case "站车服务":
-      path = "station-car-service";
+      path = "/station-car-service";
       break;
     case "商旅服务":
       path = "/business-service";
       break;
     case "出行指南":
-      path = "travel-guide";
+      path = "/travel-guide";
       break;
     case "信息查询":
-      path = "detail-search";
+      path = "/detail-search";
       break;
     default:
       break;

@@ -1,6 +1,6 @@
 <template>
   <div class="error-hint">
-    抱歉, 没找到页面😓,<span @click="goHomePage">点击这里返回主页</span>
+    <span @click="goHomePage">点击这里返回主页</span>
   </div>
 </template>
 
@@ -17,19 +17,38 @@ function goHomePage(): void {
 </script>
 
 <style lang="scss" scoped>
+@import "@scss/util/options.scss";
+
 .error-hint {
-  margin-top: 30px;
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   text-align: center;
   font-size: 60px;
   font-weight: 600;
   color: black;
+  background: scroll no-repeat url("./images/very_sorry.png");
+  background-position: center -3px;
 
   span {
-    color: cadetblue;
-    text-decoration: underline;
-    font-weight: 500;
+    display: inline-block;
+    position: relative;
+    margin-top: 25vh !important;
+    font-weight: 400;
+    @include text-clip-fn(23deg);
+    cursor: pointer;
+    transform: rotate(-3deg);
+    border-bottom: 5px solid rgb(68, 93, 235);
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -30px;
+      top: -20px;
+      right: -30px;
+      bottom: -30px;
+      border: 8px dashed rgb(81, 195, 230);
+      border-radius: 6px;
+    }
   }
 }
 </style>

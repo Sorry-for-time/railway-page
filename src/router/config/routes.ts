@@ -3,6 +3,8 @@ import { RouteRecordRaw } from "vue-router";
 const Home = () => import("@/pages/home/Home.vue");
 const BusinessService = () => import("@/pages/business/BusinessService.vue");
 
+// 辅助页面
+const WaitDevelop = () => import("@/pages/waitDevelop/WaitDevelop.vue");
 const NotFoundPage = () => import("@/pages/error/NotFoundPage.vue");
 
 export const routes: RouteRecordRaw[] = [
@@ -23,6 +25,50 @@ export const routes: RouteRecordRaw[] = [
     },
   },
 
+  // 车票
+  {
+    name: "ticket",
+    path: "/ticket",
+    component: WaitDevelop,
+    meta: {
+      title: "车票",
+      needAuth: false,
+    },
+  },
+
+  // 团购服务
+  {
+    name: "groupService",
+    path: "/group-service",
+    component: WaitDevelop,
+    meta: {
+      title: "团购服务",
+      needAuth: false,
+    },
+  },
+
+  // 会员服务
+  {
+    name: "vipService",
+    path: "/vip-service",
+    component: WaitDevelop,
+    meta: {
+      title: "会员服务",
+      needAuth: false,
+    },
+  },
+
+  // 车票
+  {
+    name: "station-car-service",
+    path: "/station-car-service",
+    component: WaitDevelop,
+    meta: {
+      title: "站车服务",
+      needAuth: false,
+    },
+  },
+
   // 商务服务
   {
     name: "businessService",
@@ -30,6 +76,28 @@ export const routes: RouteRecordRaw[] = [
     component: BusinessService,
     meta: {
       title: "商务服务",
+      needAuth: false,
+    },
+  },
+
+  // 出行指南
+  {
+    name: "travelGuide",
+    path: "/travel-guide",
+    component: WaitDevelop,
+    meta: {
+      title: "出行指南",
+      needAuth: false,
+    },
+  },
+
+  // 信息查询
+  {
+    name: "detailSearch",
+    path: "/detail-search",
+    component: WaitDevelop,
+    meta: {
+      title: "信息查询",
       needAuth: false,
     },
   },
