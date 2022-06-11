@@ -45,7 +45,6 @@ export function ColorfulBackground(): Ref<string> {
   const currentSelectColorUnits: Ref<string> = ref("");
   onMounted(() => {
     const currentIndex = getRandomValue();
-    console.log(currentIndex);
     currentSelectColorUnits.value = `${bgcColors[currentIndex].deg}, ${bgcColors[currentIndex].linerColorStart}, ${bgcColors[currentIndex].linerColorEnd}`;
   });
 
