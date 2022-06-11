@@ -1,9 +1,14 @@
 <template>
   <div class="announcement">
     <div class="category">
-      <span class="when-active">最新发布</span>
-      <span>常见问题</span>
-      <span>信用信息</span>
+      <span
+        v-for="(value, index) in itemTypes"
+        :key="index"
+        :class="{ 'when-active': index === currentSelect }"
+        @click="currentSelect = index"
+      >
+        {{ value }}
+      </span>
     </div>
 
     <div class="message-areas">
@@ -20,6 +25,10 @@
 </template>
 
 <script setup lang="ts">
+import { reactive, ref, Ref } from "vue";
+const currentSelect: Ref<number> = ref(0);
+const itemTypes: Array<string> = reactive(["最新发布", "常见问题", "信用信息"]);
+
 const announcement = [
   // 最新发布
   {
