@@ -23,22 +23,15 @@
 
     <!-- 展示的路由页面 -->
     <div class="right-show-page">
-      <el-date-picker
-        v-model="value1"
-        type="daterange"
-        range-separator="To"
-        start-placeholder="Start date"
-        end-placeholder="End date"
-        unlink-panels
-        :size="'small'"
-      />
+      <Calendar />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-const value1 = ref("");
+import Calendar from "@/components/calendar/Calendar.vue";
+
 const currentShow = ref("ticket");
 function changeSelectItem(str: string): void {
   currentShow.value = str;
@@ -95,6 +88,9 @@ function changeSelectItem(str: string): void {
     }
   }
   .right-show-page {
+    display: grid;
+    align-items: center;
+    justify-content: center;
     .el-date-table-cell__text {
       color: black !important;
     }
