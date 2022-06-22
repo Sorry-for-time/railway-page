@@ -3,7 +3,7 @@
     <!-- 轮播图 -->
     <el-carousel trigger="click" height="490px">
       <el-carousel-item v-for="(item, key) in imgList" :key="key">
-        <img :src="item" alt="" />
+        <img v-lazy="item" alt="" />
       </el-carousel-item>
     </el-carousel>
 
