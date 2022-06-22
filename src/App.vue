@@ -9,7 +9,7 @@
   <!-- 内容主体 -->
   <router-view v-slot="{ Component }">
     <Transition name="fade">
-      <KeepAlive>
+      <KeepAlive max="8">
         <div :key="$route.path">
           <component :is="Component" />
         </div>
