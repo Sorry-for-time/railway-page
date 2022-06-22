@@ -9,7 +9,7 @@
     <!-- 列表 -->
     <div class="list">
       <div class="item" v-for="(value, index) in imgList" :key="index">
-        <img :src="value.imgUrl" alt="" />
+        <img v-lazy="value.imgUrl" alt="图片加载错误" />
         <div class="title">{{ value.description }}</div>
         <div class="price"><span>¥</span>{{ value.price }}</div>
       </div>

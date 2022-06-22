@@ -1,7 +1,7 @@
 <template>
   <section class="img-brand-list">
     <div class="item" v-for="(value, index) in imgList" :key="index">
-      <img :src="value" alt="貌似图片木有能加载出来???🥲" />
+      <img v-lazy="value" alt="貌似图片木有能加载出来???🥲" />
     </div>
   </section>
 </template>
