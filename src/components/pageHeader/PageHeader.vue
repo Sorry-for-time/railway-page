@@ -42,28 +42,30 @@
       <span
         v-for="(value, index) in majorCategory"
         :key="index"
-        :class="{ 'when-active': index === currentActive }"
+        :class="{ 'when-active': value.name.includes(route.path) }"
         @click="
-          goPath(value);
-          changeCurrentActive(index);
+          goPath(value.title);
+          currentItem = value.name;
         "
       >
-        {{ value }}
+        {{ value.title }}
       </span>
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
-import { useRouter } from "vue-router";
+import { reactive, ref, watchEffect } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
+const route = useRoute();
+const currentItem = ref("");
+
+watchEffect(() => {
+  currentItem.value = route.path;
+});
 
 const searchValue = ref("");
-const currentActive = ref(0);
-
-function changeCurrentActive(index: number): void {
-  currentActive.value = index;
-}
 
 /**
  * @description 根据已经输入内容进行搜索
@@ -76,15 +78,39 @@ function goSearch() {
 /**
  * @description 主要分类关键词
  */
-const majorCategory: Array<string> = reactive([
-  "首页",
-  "车票",
-  "团购服务",
-  "会员服务",
-  "站车服务",
-  "商旅服务",
-  "出行指南",
-  "信息查询",
+const majorCategory: Array<{ name: string; title: string }> = reactive([
+  {
+    name: "/home",
+    title: "首页",
+  },
+  {
+    name: "/ticket",
+    title: "车票",
+  },
+  {
+    name: "/group-service",
+    title: "团购服务",
+  },
+  {
+    name: "/vip-service",
+    title: "会员服务",
+  },
+  {
+    name: "/station-car-service",
+    title: "站车服务",
+  },
+  {
+    name: "/business-service",
+    title: "商旅服务",
+  },
+  {
+    name: "/travel-guide",
+    title: "出行指南",
+  },
+  {
+    name: "/detail-search",
+    title: "信息查询",
+  },
 ]);
 
 const router = useRouter();

@@ -9,7 +9,7 @@
   <!-- 内容主体 -->
   <router-view v-slot="{ Component }">
     <Transition name="fade">
-      <KeepAlive>
+      <KeepAlive max="8">
         <div :key="$route.path">
           <component :is="Component" />
         </div>
@@ -39,9 +39,7 @@ import LoadingCommonHint from "@/components/common/loading-hint/LoadingCommonHin
 const PageHeader = defineAsyncComponent(
   () => import("@/components/pageHeader/PageHeader.vue")
 );
-const ContentBody = defineAsyncComponent(
-  () => import("@/components/contentBody/ContentBody.vue")
-);
+
 const PageFooter = defineAsyncComponent(
   () => import("@/components/pageFooter/PageFooter.vue")
 );
@@ -51,6 +49,7 @@ const HelpBar = defineAsyncComponent(
 
 const route = useRoute();
 const isNeedShowSideBar = ref(true);
+
 watchEffect(() => {
   // 监听路由信息, 决定是否展示侧边栏工具
   if (!route.path.includes("home")) {
@@ -102,6 +101,6 @@ watchEffect(() => {
   animation: fade 300ms ease-out forwards;
 }
 .fade-leave-active {
-  animation: fade-pined 280ms ease-out forwards;
+  animation: fade-pined 280ms ease-in forwards;
 }
 </style>
