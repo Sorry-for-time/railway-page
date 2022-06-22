@@ -10,7 +10,7 @@
 
 ## note:
 
-- **项目持续更新重...**
+- **项目持续更新中(未完)...**
 - 这个项目要求你必须已经安装好了 nodejs 环境(>=12)
 - 且已经安装好了 vue-cli 脚手架工具(>=5.0)
 - 在一切无误后边可以进行本地测试和打包部署了
@@ -35,6 +35,9 @@ npm run build
 <div align="center">
 <h3>主页</h3>
 <img src=".assets/main-page.jpeg" alt="图片貌似没加载出来..." width="80%" />
+
+<h3>图片懒加载配置</h3>
+<img src=".assets/loading-hint.png" alt="图片貌似没加载出来..." width="80%" />
 
 <h3>侧边栏效果</h3>
 <img src=".assets/right-side-bar.png" alt="图片貌似没加载出来..." width="80%" />
