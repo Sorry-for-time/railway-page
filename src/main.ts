@@ -2,6 +2,7 @@ import App from "./App.vue";
 import { createApp } from "vue";
 import { router } from "@/router/router";
 import lazyPlugin from "vue3-lazy";
+import { apiManager } from "@/network/network";
 
 // 引入 svg 图标库
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
@@ -12,6 +13,7 @@ import "@node/nprogress/nprogress.css";
 import "@scss/rewrite-plugin-style/rewrite-nprogress.scss";
 
 const app = createApp(App);
+Reflect.set(app.config, "$api", apiManager);
 
 lazyPlugin.install(app, {
   loading: "/imgs/lazyload-hints/loading.gif",

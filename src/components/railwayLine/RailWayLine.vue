@@ -158,7 +158,7 @@ section {
           margin-right: 5px;
           font-size: 15px;
           font-weight: 600;
-          color: hsl(30, 100%, 50%);
+          color: inherit;
         }
       }
     }
