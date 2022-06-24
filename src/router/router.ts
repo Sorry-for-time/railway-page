@@ -15,11 +15,16 @@ const router = VueRouter.createRouter({
   history: VueRouter.createWebHistory(),
   routes,
   // 滚动行为
-  scrollBehavior() {
-    return {
-      behavior: "smooth",
-      top: 0,
-    };
+  scrollBehavior(_to, _from, savedPosition) {
+    return savedPosition
+      ? {
+          behavior: "smooth",
+          savedPosition,
+        }
+      : {
+          behavior: "smooth",
+          top: 0,
+        };
   },
 });
 

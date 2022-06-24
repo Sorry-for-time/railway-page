@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
+import { Login } from "@/components/login/Login";
 
 const Home = () => import("@/pages/home/Home.vue");
 const BusinessService = () => import("@/pages/business/BusinessService.vue");
@@ -7,7 +8,7 @@ const BusinessService = () => import("@/pages/business/BusinessService.vue");
 const WaitDevelop = () => import("@/pages/waitDevelop/WaitDevelop.vue");
 const NotFoundPage = () => import("@/pages/error/NotFoundPage.vue");
 
-export const routes: RouteRecordRaw[] = [
+export const routes: Array<RouteRecordRaw> = [
   // 首页重定向
   {
     path: "",
@@ -21,6 +22,17 @@ export const routes: RouteRecordRaw[] = [
     component: Home,
     meta: {
       title: "中国铁路12306",
+      needAuth: false,
+    },
+  },
+
+  // 登录
+  {
+    name: "login",
+    path: "/login",
+    component: Login,
+    meta: {
+      title: "登录",
       needAuth: false,
     },
   },

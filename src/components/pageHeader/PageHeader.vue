@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header v-show="needShow">
     <div class="header-show">
       <!-- logo -->
       <img class="logo" src="/imgs/logo.jpg" alt="图片貌似没加载出来???🙃" />
@@ -30,7 +30,7 @@
 
           <!-- 登录和注册 -->
           <div class="fn-area">
-            <span>登录</span>
+            <span @click="goLogin">登录</span>
             <span>注册</span>
           </div>
         </div>
@@ -60,9 +60,11 @@ import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const currentItem = ref("");
+const needShow = ref(true);
 
 watchEffect(() => {
   currentItem.value = route.path;
+  needShow.value = route.path !== "/login";
 });
 
 const searchValue = ref("");
@@ -149,6 +151,13 @@ function goPath(targetPathMapName: string): void {
       break;
   }
   router.push(path);
+}
+
+/**
+ * @description 跳转到登录页面
+ */
+function goLogin(): void {
+  router.push("/login");
 }
 </script>
 
