@@ -62,7 +62,7 @@ watchEffect(() => {
 
 <style lang="scss">
 #app {
-  width: 100%;
+  width: clamp(1200px, 100%, 2000px);
   background: white;
 }
 </style>
