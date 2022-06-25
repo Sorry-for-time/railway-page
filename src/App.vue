@@ -9,7 +9,7 @@
   <!-- 内容主体 -->
   <router-view v-slot="{ Component }">
     <Transition name="fade">
-      <KeepAlive max="8">
+      <KeepAlive max="8" exclude="login, register">
         <div :key="$route.path">
           <component :is="Component" />
         </div>
@@ -54,11 +54,13 @@ const PageHeader = defineAsyncComponent(
 const PageFooter = defineAsyncComponent(
   () => import("@/components/pageFooter/PageFooter.vue")
 );
+
 const HelpBar = defineAsyncComponent(
   () => import("@/components/helpBar/HelpBar.vue")
 );
 
 const route = useRoute();
+
 const isNeedShowSideBar = ref(true);
 
 watchEffect(() => {
