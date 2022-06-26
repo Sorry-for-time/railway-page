@@ -1,6 +1,8 @@
 import { RouteRecordRaw } from "vue-router";
 import { Login } from "@/components/login/Login";
 
+const Register = () => import("@/components/register/Register.vue");
+
 const Home = () => import("@/pages/home/Home.vue");
 const BusinessService = () => import("@/pages/business/BusinessService.vue");
 
@@ -33,6 +35,17 @@ export const routes: Array<RouteRecordRaw> = [
     component: Login,
     meta: {
       title: "登录",
+      needAuth: false,
+    },
+  },
+
+  // 登录
+  {
+    name: "register",
+    path: "/register",
+    component: Register,
+    meta: {
+      title: "注册",
       needAuth: false,
     },
   },
