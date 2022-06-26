@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/mockjs": "^1.0.6",
     "element-plus": "^2.2.5",
     "font-awesome": "^4.7.0",
     "vue": "^3.2.25"
@@ -20,6 +21,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "axios": "^0.27.2",
+    "mockjs": "^1.1.0",
     "nanoid": "^4.0.0",
     "nprogress": "^0.2.0",
     "sass": "^1.52.2",

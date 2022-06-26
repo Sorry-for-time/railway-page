@@ -4,6 +4,8 @@ import { router } from "@/router/router";
 import lazyPlugin from "vue3-lazy";
 import { apiManager } from "@/network/network";
 
+import "@/mock/mock-config";
+
 // 引入 svg 图标库
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
