@@ -31,7 +31,7 @@
           <!-- 登录和注册 -->
           <div class="fn-area">
             <span @click="goLogin">登录</span>
-            <span>注册</span>
+            <span @click="goRegister">注册</span>
           </div>
         </div>
       </div>
@@ -158,6 +158,10 @@ function goPath(targetPathMapName: string): void {
  */
 function goLogin(): void {
   router.push("/login");
+}
+
+function goRegister(): void {
+  router.push("/register");
 }
 </script>
 

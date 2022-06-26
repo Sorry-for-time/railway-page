@@ -9,7 +9,7 @@
   <!-- 内容主体 -->
   <router-view v-slot="{ Component }">
     <Transition name="fade">
-      <KeepAlive max="8">
+      <KeepAlive max="8" exclude="login, register">
         <div :key="$route.path">
           <component :is="Component" />
         </div>
@@ -32,9 +32,20 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, ref, watchEffect } from "vue";
+import {
+  defineAsyncComponent,
+  getCurrentInstance,
+  provide,
+  ref,
+  watchEffect,
+} from "vue";
 import { useRoute } from "vue-router";
 import LoadingCommonHint from "@/components/common/loading-hint/LoadingCommonHint.vue";
+import { AxiosInstance } from "axios";
+
+const App = getCurrentInstance()!;
+const $api: AxiosInstance = Reflect.get(App.appContext.config, "$api");
+provide("$api", $api);
 
 const PageHeader = defineAsyncComponent(
   () => import("@/components/pageHeader/PageHeader.vue")
@@ -43,11 +54,13 @@ const PageHeader = defineAsyncComponent(
 const PageFooter = defineAsyncComponent(
   () => import("@/components/pageFooter/PageFooter.vue")
 );
+
 const HelpBar = defineAsyncComponent(
   () => import("@/components/helpBar/HelpBar.vue")
 );
 
 const route = useRoute();
+
 const isNeedShowSideBar = ref(true);
 
 watchEffect(() => {
