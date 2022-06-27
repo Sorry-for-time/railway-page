@@ -11,6 +11,8 @@ auto-imports.d.ts
 
 node_modules
 dist
+out
+target
 dist-ssr
 *.local
 
