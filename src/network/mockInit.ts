@@ -9,13 +9,11 @@ const mockApi = axios.create({
 });
 
 mockApi.interceptors.request.use((config) => {
-  nProgress.start();
   return config;
 });
 
 mockApi.interceptors.response.use(
   (res) => {
-    nProgress.done();
     return res.data;
   },
   (error) => {
