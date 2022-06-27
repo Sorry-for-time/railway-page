@@ -1,6 +1,6 @@
 root = true
 
-[{src/**, index.html, public/**}]
+[{src/**, index.html, public/**, scss/**}]
 charset = utf-8
 end_of_line = lf
 indent_style = space
