@@ -56,13 +56,13 @@
 
 <script setup lang="ts">
 import { reactive, ref, watchEffect } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, Router } from "vue-router";
 
 const route = useRoute();
 const currentItem = ref("");
 const needShow = ref(true);
 
-watchEffect(() => {
+watchEffect((): void => {
   currentItem.value = route.path;
   needShow.value = route.path !== "/login";
 });
@@ -72,7 +72,7 @@ const searchValue = ref("");
 /**
  * @description 根据已经输入内容进行搜索
  */
-function goSearch() {
+function goSearch(): void {
   // 在此写你的业务逻辑(网络请求等)
   console.log(searchValue.value);
 }
@@ -115,7 +115,7 @@ const majorCategory: Array<{ name: string; title: string }> = reactive([
   },
 ]);
 
-const router = useRouter();
+const router: Router = useRouter();
 
 /**
  * @description 跳转到指定的页面
