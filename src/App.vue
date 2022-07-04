@@ -84,7 +84,7 @@ watchEffect(() => {
 // 路由组件入场动画
 @keyframes fade {
   from {
-    filter: opacity(0);
+    filter: opacity(0.5);
   }
   to {
     filter: opacity(1);
@@ -111,9 +111,9 @@ watchEffect(() => {
 }
 
 .fade-enter-active {
-  animation: fade 300ms ease-out forwards;
+  animation: fade 800ms ease-out forwards;
 }
 .fade-leave-active {
-  animation: fade-pined 280ms ease-in forwards;
+  animation: fade-pined 800ms ease-in forwards;
 }
 </style>
