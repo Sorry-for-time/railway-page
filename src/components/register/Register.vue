@@ -75,9 +75,9 @@
           <el-input v-model="ruleForm.desc" type="textarea" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)"
-            >Create</el-button
-          >
+          <el-button type="primary" @click="submitForm(ruleFormRef)">
+            Create
+          </el-button>
           <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
         </el-form-item>
       </el-form>
@@ -85,14 +85,17 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: "Register",
+};
+</script>
+
 <script setup lang="ts">
 import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
-
 import { reactive, ref } from "vue";
 import type { FormInstance, FormRules } from "element-plus";
-
 const route: RouteLocationNormalizedLoaded = useRoute();
-const formSize = ref("default");
 const ruleFormRef = ref<FormInstance>();
 const ruleForm = reactive({
   name: "Hello",
