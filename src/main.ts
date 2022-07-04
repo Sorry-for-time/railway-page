@@ -16,7 +16,6 @@ import "@scss/rewrite-plugin-style/rewrite-nprogress.scss";
 
 const app = createApp(App);
 Reflect.set(app.config, "$api", apiManager);
-
 lazyPlugin.install(app, {
   loading: "/imgs/lazyload-hints/loading.gif",
   error: "/imgs/lazyload-hints/load-error.png",

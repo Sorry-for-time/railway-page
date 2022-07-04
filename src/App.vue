@@ -9,11 +9,11 @@
   <!-- 内容主体 -->
   <router-view v-slot="{ Component }">
     <Transition name="fade">
-      <KeepAlive max="8" exclude="login, register">
+      <keep-alive max="8" :exclude="['Login', 'Register']">
         <div :key="$route.path">
           <component :is="Component" />
         </div>
-      </KeepAlive>
+      </keep-alive>
     </Transition>
   </router-view>
 
