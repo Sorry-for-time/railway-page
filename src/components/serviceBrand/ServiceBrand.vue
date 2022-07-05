@@ -23,20 +23,21 @@ const imgList: Array<string> = reactive([
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 590px 590px;
-  grid-template-rows: 1fr afr;
+  grid-template-columns: repeat(2, 590px);
+  grid-template-rows: repeat(2, 1fr);
   justify-content: center;
   gap: 10px;
 
   .item {
     background-color: antiquewhite;
     overflow: hidden;
-    transition: 200ms ease-out;
-    box-shadow: 0 1px 4px hsla(0, 0%, 5%, 0.459);
     border-radius: 3px;
+    box-shadow: 0 1px 4px hsla(0, 0%, 5%, 0.459);
+    transition: 200ms ease-out;
 
     &:hover {
       transform: translateY(-5px);
+
       img {
         transform: scale(1.03);
         filter: grayscale(0) saturate(1.1) brightness(1.03);

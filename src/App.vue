@@ -95,14 +95,12 @@ watchEffect(() => {
 @keyframes fade-pined {
   from {
     // 使元素不占据页面宽度
-    position: fixed;
     top: 120px;
     right: 0%;
     left: 0%;
     filter: opacity(1);
   }
   to {
-    position: fixed;
     top: 120px;
     right: 0%;
     left: 0%;
@@ -114,6 +112,8 @@ watchEffect(() => {
   animation: fade 800ms ease-out forwards;
 }
 .fade-leave-active {
+  display: none;
+  position: fixed;
   animation: fade-pined 800ms ease-in forwards;
 }
 </style>

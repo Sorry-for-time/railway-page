@@ -2,10 +2,8 @@ import { RouteRecordRaw } from "vue-router";
 import { Login } from "@/components/login/Login";
 
 const Register = () => import("@/components/register/Register.vue");
-
 const Home = () => import("@/pages/home/Home.vue");
 const BusinessService = () => import("@/pages/business/BusinessService.vue");
-
 // 辅助页面
 const WaitDevelop = () => import("@/pages/waitDevelop/WaitDevelop.vue");
 const NotFoundPage = () => import("@/pages/error/NotFoundPage.vue");
