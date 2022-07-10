@@ -1,4 +1,4 @@
-import { join } from "path";
+import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
@@ -8,12 +8,12 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 /**
  * @description 返回项目下对应文件夹路径绝对值
- * @param {string} ProjectDirectoryName
+ * @param {string} directoryName
  * @return {string}
  */
-const aliasPath: Function = (ProjectDirectoryName: string): string => {
-  return join(__dirname, ProjectDirectoryName);
-};
+function getPath(directoryName: string): string {
+  return fileURLToPath(new URL(directoryName, import.meta.url));
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,9 +32,9 @@ export default defineConfig({
   resolve: {
     // 设置路径别名
     alias: {
-      "@": aliasPath("src"),
-      "@node": aliasPath("node_modules"),
-      "@scss": aliasPath("scss"),
+      "@": getPath("./src"),
+      "@node": getPath("./node_modules"),
+      "@scss": getPath("./scss"),
     },
   },
 

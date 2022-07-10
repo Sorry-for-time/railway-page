@@ -59,8 +59,8 @@
         </el-form-item>
         <el-form-item label="Activity type" prop="type">
           <el-checkbox-group v-model="ruleForm.type">
-            <el-checkbox label="Online activities" name="type" />
-            <el-checkbox label="Promotion activities" name="type" />
+            <el-checkbox class="set-black" label="Online activities" name="type" />
+            <el-checkbox class="set-black" label="Promotion activities" name="type" />
             <el-checkbox label="Offline activities" name="type" />
             <el-checkbox label="Simple brand exposure" name="type" />
           </el-checkbox-group>
@@ -210,7 +210,6 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
     grid-template-rows: 34px calc(100% - 34px);
 
     overflow: hidden;
-
     .title {
       background: scroll no-repeat center
         linear-gradient(
@@ -225,6 +224,15 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
       color: hsl(0, 0%, 96%);
       font-size: 15px;
       padding: 6px 17px;
+    }
+
+    .demo-ruleForm {
+      background-color: antiquewhite;
+
+      :deep(.set-black) {
+        color: black !important;
+        background-color: black;
+      }
     }
   }
 }

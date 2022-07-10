@@ -10,10 +10,10 @@
 import { reactive } from "vue";
 
 const imgList: Array<string> = reactive([
-  "imgs/brand-list/10002.jpg",
-  "imgs/brand-list/10003.jpg",
-  "imgs/brand-list/10004.jpg",
-  "imgs/brand-list/10005.jpg",
+  "/imgs/brand-list/10002.jpg",
+  "/imgs/brand-list/10003.jpg",
+  "/imgs/brand-list/10004.jpg",
+  "/imgs/brand-list/10005.jpg",
 ]);
 </script>
 

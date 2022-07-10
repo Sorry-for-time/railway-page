@@ -24,7 +24,10 @@
         >
           <h3>铁路12306</h3>
           <section class="frame">
-            <img src="imgs/footer/qr-codes/10018.png" alt="" />
+            <img
+              src="/imgs/footer/qr-codes/10018.png"
+              alt="图片貌似没加载出来?"
+            />
             <div class="hint-message">
               官方APP下载，目前铁路未授权其他网站或APP开展类似服务内容，敬请广大用户注意。
             </div>
