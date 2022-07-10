@@ -23,9 +23,9 @@ const SearchTools = defineAsyncComponent(
 );
 
 const imgList = reactive([
-  "imgs/banner/banner10.jpg",
-  "imgs/banner/banner12.jpg",
-  "imgs/banner/banner26.jpg",
+  "/imgs/banner/banner10.jpg",
+  "/imgs/banner/banner12.jpg",
+  "/imgs/banner/banner26.jpg",
 ]);
 </script>
 

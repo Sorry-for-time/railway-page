@@ -42,7 +42,7 @@
 
         <p>
           <img
-            src="imgs/footer/other/10018.png"
+            src="/imgs/footer/other/10018.png"
             alt="loading..."
             style="height: 15px"
           />
@@ -59,10 +59,10 @@
 import { reactive } from "vue";
 
 const friendLinkImgUrls: Array<string> = reactive([
-  "imgs/footer/friend-link/link02.png",
-  "imgs/footer/friend-link/link03.png",
-  "imgs/footer/friend-link/link04.png",
-  "imgs/footer/friend-link/link05.png",
+  "/imgs/footer/friend-link/link02.png",
+  "/imgs/footer/friend-link/link03.png",
+  "/imgs/footer/friend-link/link04.png",
+  "/imgs/footer/friend-link/link05.png",
 ]);
 
 /**
@@ -74,19 +74,19 @@ const qrCodeImgUrls: Array<{
 }> = reactive([
   {
     title: "中国铁路官方微信",
-    imgUrl: "imgs/footer/qr-codes/10015.png",
+    imgUrl: "/imgs/footer/qr-codes/10015.png",
   },
   {
     title: "中国铁路官方微博",
-    imgUrl: "imgs/footer/qr-codes/10016.png",
+    imgUrl: "/imgs/footer/qr-codes/10016.png",
   },
   {
     title: "12306 公众号",
-    imgUrl: "imgs/footer/qr-codes/10016.png",
+    imgUrl: "/imgs/footer/qr-codes/10016.png",
   },
   {
     title: "铁路 12306",
-    imgUrl: "imgs/footer/qr-codes/10018.png",
+    imgUrl: "/imgs/footer/qr-codes/10018.png",
   },
 ]);
 </script>
