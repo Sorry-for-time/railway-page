@@ -3,10 +3,9 @@
     "types": ["element-plus/global"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "@node/*": ["node_modules/*"],
-      "@scss/*": ["scss/*"],
-      "/*": ["public/*"]
+      "@/*": ["./src/*"],
+      "@node/*": ["./node_modules/*"],
+      "@scss/*": ["./scss/*"]
     },
     "target": "es2015",
     "useDefineForClassFields": true,
@@ -26,5 +25,9 @@
     "experimentalDecorators": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
