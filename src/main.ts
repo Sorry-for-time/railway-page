@@ -1,3 +1,5 @@
+import "@node/normalize.css/normalize.css";
+
 import RootContainer from "./App.vue";
 import { App, createApp } from "vue";
 import { router } from "@/router/router";

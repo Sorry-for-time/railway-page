@@ -12,6 +12,7 @@
     "@types/mockjs": "^1.0.6",
     "element-plus": "^2.2.5",
     "font-awesome": "^4.7.0",
+    "normalize.css": "^8.0.1",
     "vue": "^3.2.25"
   },
   "devDependencies": {
