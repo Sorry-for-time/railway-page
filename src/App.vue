@@ -28,7 +28,7 @@
   </Suspense>
 
   <!-- 右侧工具栏 -->
-  <HelpBar v-show="isNeedShowSideBar" />
+  <HelpBar v-if="isNeedShowSideBar" />
 </template>
 
 <script setup lang="ts">
