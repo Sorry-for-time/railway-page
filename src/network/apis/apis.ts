@@ -22,8 +22,8 @@ export async function requestAnnouncements(): Promise<AxiosResponse<any, any>> {
  * @brief 测试/学习接口, 切勿商用或者滥用
  * @description 获取疫情分布相关的数据
  */
-export async function getMapData(): Promise<AxiosResponse<any, any>> {
-  return apiManager.post(
+export async function requestMapData(): Promise<AxiosResponse<any, any>> {
+  return await apiManager.post(
     "https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=statisGradeCityDetail,diseaseh5Shelf"
   );
 }

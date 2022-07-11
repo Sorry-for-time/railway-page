@@ -5,7 +5,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onBeforeMount, onMounted } from "vue";
+import { requestMapData } from "@/network/apis/apis";
+
+onBeforeMount(() => {
+  requestMapData().then((res) => {
+    console.log(res.data.data);
+  });
+});
 
 onMounted(() => {
   console.log("=".repeat(12), "Travel Guide", "=".repeat(12));
@@ -17,6 +24,8 @@ onMounted(() => {
   width: 100%;
   height: 630px;
   display: grid;
+  background: scroll center no-repeat url("/bgc.png");
+  background-size: cover;
 
   h1 {
     color: rgb(241, 252, 252);
