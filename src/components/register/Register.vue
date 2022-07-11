@@ -59,8 +59,16 @@
         </el-form-item>
         <el-form-item label="Activity type" prop="type">
           <el-checkbox-group v-model="ruleForm.type">
-            <el-checkbox class="set-black" label="Online activities" name="type" />
-            <el-checkbox class="set-black" label="Promotion activities" name="type" />
+            <el-checkbox
+              class="set-black"
+              label="Online activities"
+              name="type"
+            />
+            <el-checkbox
+              class="set-black"
+              label="Promotion activities"
+              name="type"
+            />
             <el-checkbox label="Offline activities" name="type" />
             <el-checkbox label="Simple brand exposure" name="type" />
           </el-checkbox-group>
