@@ -8,13 +8,11 @@
 
   <!-- 内容主体 -->
   <router-view v-slot="{ Component }">
-    <Transition name="fade">
-      <keep-alive max="8" :exclude="['Login', 'Register']">
-        <div :key="$route.path">
-          <component :is="Component" />
-        </div>
+    <transition name="fade">
+      <keep-alive :max="10" :exclude="['Login', 'Register']">
+        <component :is="Component" :key="$route.fullPath" />
       </keep-alive>
-    </Transition>
+    </transition>
   </router-view>
 
   <!-- 页脚 -->
@@ -28,7 +26,7 @@
   </Suspense>
 
   <!-- 右侧工具栏 -->
-  <HelpBar v-show="isNeedShowSideBar" />
+  <HelpBar v-if="isNeedShowSideBar" />
 </template>
 
 <script setup lang="ts">

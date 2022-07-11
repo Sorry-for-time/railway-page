@@ -1,29 +1,31 @@
 <template>
-  <Suspense>
-    <template #default>
-      <Carousel />
-    </template>
+  <div>
+    <Suspense>
+      <template #default>
+        <Carousel />
+      </template>
 
-    <template #fallback>
-      <LoadingBiggerHint loading-msg="just wait a moment" />
-    </template>
-  </Suspense>
+      <template #fallback>
+        <LoadingBiggerHint loading-msg="just wait a moment" />
+      </template>
+    </Suspense>
 
-  <Suspense>
-    <template #default>
-      <ContentBody />
-    </template>
+    <Suspense>
+      <template #default>
+        <ContentBody />
+      </template>
 
-    <template #fallback>
-      <LoadingBiggerHint
-        loading-msg="PLEASE WAIT SIGNAL🐌"
-        liner-angle="-45deg"
-        liner-color-start="pink"
-        liner-color-end="cyan"
-        font-hint-size="6rem"
-      />
-    </template>
-  </Suspense>
+      <template #fallback>
+        <LoadingBiggerHint
+          loading-msg="PLEASE WAIT SIGNAL🐌"
+          liner-angle="-45deg"
+          liner-color-start="pink"
+          liner-color-end="cyan"
+          font-hint-size="6rem"
+        />
+      </template>
+    </Suspense>
+  </div>
 </template>
 
 <script setup lang="ts">
