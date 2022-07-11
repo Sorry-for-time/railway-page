@@ -4,6 +4,7 @@ import { Login } from "@/components/login/Login";
 const Register = () => import("@/components/register/Register.vue");
 const Home = () => import("@/pages/home/Home.vue");
 const BusinessService = () => import("@/pages/business/BusinessService.vue");
+const TravelGuide = () => import("@/pages/travelGuide/TravelGuide.vue");
 // 辅助页面
 const WaitDevelop = () => import("@/pages/waitDevelop/WaitDevelop.vue");
 const NotFoundPage = () => import("@/pages/error/NotFoundPage.vue");
@@ -37,7 +38,7 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
 
-  // 登录
+  // 注册
   {
     name: "register",
     path: "/register",
@@ -107,7 +108,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     name: "travelGuide",
     path: "/travel-guide",
-    component: WaitDevelop,
+    component: TravelGuide,
     meta: {
       title: "出行指南",
       needAuth: false,
