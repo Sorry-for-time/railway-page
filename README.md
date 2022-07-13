@@ -10,7 +10,8 @@
 
 ## 当前版本功能
 
-- (`最新`)添加一个简单的疫情可视化图表展示 感谢 [小满 zs 的教程]("https://www.bilibili.com/video/BV1dS4y1y7vd?p=70&spm_id_from=333.880.my_history.page.click&vd_source=68720e34574ae6c7d6a143d6c92bdac7")
+- (`最新`) 添加返回顶部按钮通用组件, 包含默认动画, 已默认设置常规滚动处理的回调, 且允许调整众多参数
+- 添加一个简单的疫情可视化图表展示 感谢 [小满 zs 的教程]("https://www.bilibili.com/video/BV1dS4y1y7vd?p=70&spm_id_from=333.880.my_history.page.click&vd_source=68720e34574ae6c7d6a143d6c92bdac7")
   - 大致的变更部分:
     1. 在原有的基础上添加了一些小修改(在视图大小发生更改时重新渲染地图, 且套了一层节流)
     2. 受限于现有布局, 移除了折线图
