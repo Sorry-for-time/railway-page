@@ -27,12 +27,18 @@ export const useMapData = defineStore("mapData", {
   },
 
   getters: {
+    /**
+     * @description 简化后的地图数据
+     */
     simplifyMapData(state) {
       return state.list.data?.diseaseh5Shelf.areaTree[0].children;
     },
   },
 
   actions: {
+    /**
+     * @description 请求接口数据并初始化仓库数据
+     */
     async initialList(): Promise<void> {
       const result = await requestMapData();
       this.list = result.data;
