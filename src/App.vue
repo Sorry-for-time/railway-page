@@ -28,7 +28,7 @@
   <!-- 右侧工具栏 -->
   <HelpBar v-if="isNeedShowSideBar" />
 
-  <GoBackToTop />
+  <GoBackToTop :hide-when-scroll-top="true" />
 </template>
 
 <script setup lang="ts">
