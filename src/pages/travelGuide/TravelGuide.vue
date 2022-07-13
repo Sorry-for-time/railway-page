@@ -54,7 +54,7 @@
         </thead>
 
         <tbody>
-          <tr v-for="item in mapDataStore.item" :key="uuid()">
+          <tr v-for="item in mapDataStore.item" :key="nanoid(10)">
             <td>{{ item.name }}</td>
             <td>{{ item.today?.confirm }}</td>
             <td>{{ item.total?.confirm }}</td>
@@ -86,16 +86,12 @@ function initEcharts(domElement: HTMLElement): EChartsType {
   return echarts.init(domElement);
 }
 
-function uuid(): string {
-  return nanoid();
-}
-
 onMounted(async (): Promise<void> => {
-  const chart = initEcharts(boxCenter.value!);
+  const mapChart = initEcharts(boxCenter.value!);
   const pieChart = initEcharts(pie.value!);
 
   // 开启加载提示
-  chart.showLoading();
+  mapChart.showLoading();
   pieChart.showLoading();
 
   await mapDataStore.initialList();
@@ -111,7 +107,7 @@ onMounted(async (): Promise<void> => {
   /**
    * @see https://www.isqqw.com/echartsdetail?id=15158
    */
-  chart.setOption({
+  mapChart.setOption({
     geo: {
       map: "china",
       aspectScale: 0.8,
@@ -260,20 +256,22 @@ onMounted(async (): Promise<void> => {
     ],
   });
 
-  // 隐藏加载提示
-  chart.hideLoading();
+  // 结束图表的加载提示
+  mapChart.hideLoading();
   pieChart.hideLoading();
 
-  chart.on("click", (value: any): void => {
+  mapChart.on("click", (value: any): void => {
     console.log(value);
     mapDataStore.item = value.data.children;
   });
+
   mapDataStore.item = cities.filter((v) => v.name === "福建")[0].children;
+
   // 监听窗口的大小改变, 并且进行重绘
   window.visualViewport.addEventListener(
     "resize",
     debounce(() => {
-      chart.resize();
+      mapChart.resize();
     }, 80)
   );
 });
@@ -292,23 +290,35 @@ onMounted(async (): Promise<void> => {
   background-size: cover;
 
   &-left {
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px) brightness(1.4);
 
     .top-show {
-      width: 100%;
+      width: 96%;
+      margin: 10px auto;
+      height: 180px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
       text-align: center;
+      gap: 5px;
 
       section {
-        border: 1px solid #ccc;
         padding: 10px 0;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+
+        border: 1px solid hsla(0, 0%, 80%, 0.479);
+        border-radius: 5px;
         font-size: 14px;
         background-color: hsla(180, 100%, 50%, 0.103);
+
+        transition: 180ms ease-out;
+
+        &:hover {
+          transform: scale(1.01) translateY(-2px);
+        }
       }
     }
 
@@ -320,16 +330,27 @@ onMounted(async (): Promise<void> => {
   }
 
   &-center {
-    box-shadow: 0 0 3px black;
+    position: relative;
     overflow: hidden;
+    box-shadow: 0 0 3px black;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: hsla(219, 56%, 63%, 0.116);
+      backdrop-filter: blur(6px);
+    }
   }
 
   &-right {
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px) brightness(1.4);
     color: white;
 
     table {
-      width: 100%;
+      width: 96%;
+      margin: 10px auto;
 
       th,
       td {
