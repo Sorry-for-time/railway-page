@@ -38,6 +38,10 @@ const props = defineProps({
     type: Number,
     default: 500,
   },
+  waitTime: {
+    type: Number,
+    default: 400,
+  },
 });
 
 let prevScrollPos: number = 0; // 当前滚动停留位置
@@ -56,7 +60,7 @@ const decideShowByPropHeight = throttle((): void => {
     needShow.value = false;
   }
   prevScrollPos = compare;
-}, 800);
+}, props.waitTime);
 
 /**
  * @description 根据 prop 传递参数决定是否启用滚轮上下滚动来显示隐藏返回按钮, 与 decideShowByPropHeight 互斥(二选一)
@@ -69,7 +73,7 @@ const decideShowByIsUseScrollTop = throttle((): void => {
   if (compare < props.needShowHeight && needShow.value !== false) {
     needShow.value = false;
   }
-}, 800);
+}, props.waitTime);
 
 /**
  * @description 点击按钮平滑滚动(取决于浏览器支持)回顶部
