@@ -4,8 +4,16 @@
 
 > 仅作为个人的练习项目, 不对其进行任何负责(包括编写上的缺陷等), 页面样式/布局/LOGO 复用/模仿等仅作为个人练习上的模仿, 不进行任何商业/版权上的使用, 望悉知!!!, 综上, 不对本项目负任何的责任
 
+> 补充说明:
+> 使用到的第三方接口仅供学习, 切勿滥用(且随时可能失效)
+> 部分资源文件来自互联网, 仅供学习使用, 切勿他用
+
 ## 当前版本功能
 
+- (`最新`)添加一个简单的疫情可视化图表展示 感谢 [小满 zs 的教程]("https://www.bilibili.com/video/BV1dS4y1y7vd?p=70&spm_id_from=333.880.my_history.page.click&vd_source=68720e34574ae6c7d6a143d6c92bdac7")
+  - 大致的变更部分:
+    1. 在原有的基础上添加了一些小修改(在视图大小发生更改时重新渲染地图, 且套了一层节流)
+    2. 受限于现有布局, 移除了折线图
 - 使用 `mockjs` 模拟部分测试数据
 - 主页面路由组件的切换的过渡效果(视觉上更加友好)
 - 可复用的多彩背景待开发提示页面组件
@@ -41,6 +49,9 @@ npm run build
 <h3>主页</h3>
 <img src=".assets/main-page.jpeg" alt="图片貌似没加载出来..." width="80%" />
 
+<h3>疫情可视化简单展示</h3>
+<img src=".assets/echarts-map-example.png" alt="图片貌似没加载出来..." width="80%" />
+
 <h3>图片懒加载配置</h3>
 <img src=".assets/loading-hint.png" alt="图片貌似没加载出来..." width="80%" />
 
@@ -71,3 +82,7 @@ npm run build
     ├───serviceBrand    # 服务板块大图推荐
     └───serviceList     # 服务列表展示
 ```
+
+# Thanks
+
+- [小满 zs](https://blog.csdn.net/qq1195566313?type=blog)
