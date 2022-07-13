@@ -27,6 +27,8 @@
 
   <!-- 右侧工具栏 -->
   <HelpBar v-if="isNeedShowSideBar" />
+
+  <GoBackToTop :hide-when-scroll-top="true" />
 </template>
 
 <script setup lang="ts">
@@ -40,6 +42,7 @@ import {
 import { useRoute } from "vue-router";
 import LoadingCommonHint from "@/components/common/loading-hint/LoadingCommonHint.vue";
 import { AxiosInstance } from "axios";
+import GoBackToTop from "@/components/common/goBackTop/GoBackToTop.vue";
 
 const App = getCurrentInstance()!;
 const $api: AxiosInstance = Reflect.get(App.appContext.config, "$api");
