@@ -1,8 +1,14 @@
 import { defineStore } from "pinia";
 import { requestMapData } from "@/network/apis/apis";
-import type { RootObject } from "./receivedMapDataTypes";
+import type {
+  Children,
+  ChinaAdd,
+  ChinaTotal,
+  RootObject,
+} from "./receivedMapDataTypes";
 
 type OptionMapDataProperties = Partial<RootObject>;
+type OptionItem = Partial<Children>;
 
 /**
  * @description 获取地图数据
@@ -11,6 +17,9 @@ export const useMapData = defineStore("mapData", {
   state: () => {
     return {
       list: <OptionMapDataProperties>{},
+      item: <Array<OptionItem>>[],
+      chinaAdd: <ChinaAdd>{},
+      chinaTotal: <ChinaTotal>{},
     };
   },
 
@@ -22,9 +31,10 @@ export const useMapData = defineStore("mapData", {
 
   actions: {
     async initialList(): Promise<void> {
-      const result = (await requestMapData()).data;
-      console.log(result);
-      this.list = result;
+      const result = await requestMapData();
+      this.list = result.data;
+      this.chinaAdd = this.list.data?.diseaseh5Shelf.chinaAdd!;
+      this.chinaTotal = this.list.data?.diseaseh5Shelf.chinaTotal!;
     },
   },
 });
