@@ -5,10 +5,12 @@ import type {
   ChinaAdd,
   ChinaTotal,
   RootObject,
+  StatisGradeCityDetail,
 } from "./receivedMapDataTypes";
 
 type OptionMapDataProperties = Partial<RootObject>;
 type OptionItem = Partial<Children>;
+type CityDetail = Array<Partial<StatisGradeCityDetail>>;
 
 /**
  * @description 获取地图数据
@@ -20,6 +22,7 @@ export const useMapData = defineStore("mapData", {
       item: <Array<OptionItem>>[],
       chinaAdd: <ChinaAdd>{},
       chinaTotal: <ChinaTotal>{},
+      cityDetail: <CityDetail>{},
     };
   },
 
@@ -35,6 +38,7 @@ export const useMapData = defineStore("mapData", {
       this.list = result.data;
       this.chinaAdd = this.list.data?.diseaseh5Shelf.chinaAdd!;
       this.chinaTotal = this.list.data?.diseaseh5Shelf.chinaTotal!;
+      this.cityDetail = this.list.data?.statisGradeCityDetail.slice(0, 10)!;
     },
   },
 });
