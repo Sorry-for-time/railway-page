@@ -5,6 +5,7 @@ import { App, createApp } from "vue";
 import { router } from "@/router/router";
 import lazyPlugin from "vue3-lazy";
 import { apiManager } from "@/network/network";
+import { createPinia } from "pinia";
 
 // 运行 mock 配置文件
 import "@/mock/mock-config";
@@ -23,6 +24,7 @@ lazyPlugin.install(rootNode, {
   error: "/imgs/lazyload-hints/load-error.png",
 });
 rootNode.use(router);
+rootNode.use(createPinia());
 // 注册 elementPlus 组件
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   rootNode.component(key, component);
