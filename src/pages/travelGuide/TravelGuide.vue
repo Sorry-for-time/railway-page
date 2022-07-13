@@ -1,6 +1,45 @@
 <template>
   <section class="box">
-    <div class="box-left"></div>
+    <div class="box-left">
+      <div class="top-show">
+        <section>
+          <div>较上日+ {{ mapDataStore.chinaAdd.localConfirmH5 }}</div>
+          <div>{{ mapDataStore.chinaTotal.localConfirm }}</div>
+          <div>本土现有确诊</div>
+        </section>
+
+        <section>
+          <div>较上日+ {{ mapDataStore.chinaAdd.nowConfirm }}</div>
+          <div>{{ mapDataStore.chinaTotal.nowConfirm }}</div>
+          <div>现有确诊</div>
+        </section>
+
+        <section>
+          <div>较上日+ {{ mapDataStore.chinaAdd.confirm }}</div>
+          <div>{{ mapDataStore.chinaTotal.confirm }}</div>
+          <div>累计确诊</div>
+        </section>
+
+        <section>
+          <div>较上日+ {{ mapDataStore.chinaAdd.noInfect }}</div>
+          <div>{{ mapDataStore.chinaTotal.noInfect }}</div>
+          <div>无症状感染者</div>
+        </section>
+
+        <section>
+          <div>较上日+ {{ mapDataStore.chinaAdd.importedCase }}</div>
+          <div>{{ mapDataStore.chinaTotal.importedCase }}</div>
+          <div>境外输入</div>
+        </section>
+
+        <section>
+          <div>较上日+ {{ mapDataStore.chinaAdd.dead }}</div>
+          <div>{{ mapDataStore.chinaTotal.dead }}</div>
+          <div>累计死亡</div>
+        </section>
+      </div>
+      <div class="bottom-show" ref="pie"></div>
+    </div>
     <div class="box-center" ref="boxCenter"></div>
     <div class="box-right">
       <table cellspacing="0">
@@ -39,6 +78,8 @@ import "@/assets/region-data/testMapData";
 import { debounce } from "lodash";
 
 const boxCenter: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(null);
+const pie: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(null);
+
 const mapDataStore = useMapData();
 
 function initEcharts(domElement: HTMLElement): EChartsType {
@@ -51,9 +92,13 @@ function uuid(): string {
 
 onMounted(async (): Promise<void> => {
   const chart = initEcharts(boxCenter.value!);
-  chart.showLoading();
-  await mapDataStore.initialList();
+  const pieChart = initEcharts(pie.value!);
 
+  // 开启加载提示
+  chart.showLoading();
+  pieChart.showLoading();
+
+  await mapDataStore.initialList();
   const cities = mapDataStore.simplifyMapData!;
   const data = cities?.map((element) => {
     return {
@@ -63,11 +108,9 @@ onMounted(async (): Promise<void> => {
     };
   });
 
-  // 假设没有任何意外, 就是能拿到 dom 元素
   /**
    * @see https://www.isqqw.com/echartsdetail?id=15158
    */
-
   chart.setOption({
     geo: {
       map: "china",
@@ -179,7 +222,48 @@ onMounted(async (): Promise<void> => {
       },
     ],
   });
+
+  pieChart.setOption({
+    tooltip: {
+      trigger: "item",
+    },
+
+    series: [
+      {
+        type: "pie",
+        radius: ["40%", "70%"],
+        avoidLabelOverlap: true,
+        itemStyle: {
+          borderRadius: 4,
+          borderColor: "#fff",
+          borderWidth: 2,
+        },
+        label: {
+          show: true,
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: "14",
+          },
+        },
+        labelLine: {
+          show: true,
+        },
+        data: mapDataStore.cityDetail.map((element) => {
+          return {
+            name: element.city,
+            value: element.nowConfirm,
+          };
+        }),
+      },
+    ],
+  });
+
+  // 隐藏加载提示
   chart.hideLoading();
+  pieChart.hideLoading();
+
   chart.on("click", (value: any): void => {
     console.log(value);
     mapDataStore.item = value.data.children;
@@ -209,6 +293,30 @@ onMounted(async (): Promise<void> => {
 
   &-left {
     backdrop-filter: blur(12px);
+
+    .top-show {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      text-align: center;
+
+      section {
+        border: 1px solid #ccc;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        background-color: hsla(180, 100%, 50%, 0.103);
+      }
+    }
+
+    .bottom-show {
+      margin-top: 50px;
+      width: 100%;
+      height: 350px;
+    }
   }
 
   &-center {
