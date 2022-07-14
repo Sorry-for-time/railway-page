@@ -261,7 +261,6 @@ onMounted(async (): Promise<void> => {
   pieChart.hideLoading();
 
   mapChart.on("click", (value: any): void => {
-    console.log(value);
     mapDataStore.item = value.data.children;
   });
 
