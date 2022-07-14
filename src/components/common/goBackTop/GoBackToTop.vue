@@ -27,6 +27,7 @@ const props = defineProps({
     type: String,
     default: "45px",
   },
+
   /**
    * @description 容器的默认高度
    */
@@ -34,6 +35,7 @@ const props = defineProps({
     type: String,
     default: "45px",
   },
+
   /**
    * @description 容器离右侧的距离
    */
@@ -47,26 +49,29 @@ const props = defineProps({
    */
   bottom: {
     type: String,
-    default: "180px",
+    default: "80px",
   },
+
   /**
-   * @description 是否在鼠标滚轮向上滑动的时候隐藏容器, 与 {needShowHeight} 配置互斥
+   * @description 是否在鼠标滚轮滚回页面顶部的时候隐藏容器, 与 {triggerHeight} 配置互斥
    */
-  hideWhenScrollTop: {
+  hideWhenWheelBack: {
     type: Boolean,
     default: false,
   },
+
   /**
-   * @description 容器距达到指定页面位置才显示的高度, 与 {hideWhenScrollTop} 配置互斥
+   * @description 容器距达到指定页面位置才显示的高度, 与 {hideWhenWheelBack} 配置互斥
    */
-  needShowHeight: {
+  triggerHeight: {
     type: Number,
     default: 500,
   },
+
   /**
    * @description 所有绑定回调默认的节流触发阈值
    */
-  waitTime: {
+  throttleWaitTime: {
     type: Number,
     default: 400,
   },
@@ -82,6 +87,14 @@ const props = defineProps({
         behavior: "smooth",
       });
     },
+  },
+
+  /**
+   * @description z-index 权重
+   */
+  displayWeight: {
+    type: Number,
+    default: 999,
   },
 });
 
@@ -101,28 +114,28 @@ const decideShowByPropHeight = throttle((): void => {
     needShow.value = false;
   }
   prevScrollPos = compare;
-}, props.waitTime);
+}, props.throttleWaitTime);
 
 /**
  * @description 根据 prop 传递参数决定是否启用滚轮上下滚动来显示隐藏返回按钮, 与 decideShowByPropHeight 互斥(二选一)
  */
 const decideShowByIsUseScrollTop = throttle((): void => {
   const compare: number = document.documentElement.scrollTop;
-  if (compare > props.needShowHeight && needShow.value !== true) {
+  if (compare > props.triggerHeight && needShow.value !== true) {
     needShow.value = true;
   }
-  if (compare < props.needShowHeight && needShow.value !== false) {
+  if (compare < props.triggerHeight && needShow.value !== false) {
     needShow.value = false;
   }
-}, props.waitTime);
+}, props.throttleWaitTime);
 
 onMounted(async (): Promise<void> => {
-  if (props.hideWhenScrollTop) {
+  if (props.hideWhenWheelBack) {
     document.addEventListener("scroll", decideShowByPropHeight);
   } else {
     // 初始化
     const initialHeight: number = document.documentElement.scrollTop;
-    initialHeight > props.needShowHeight
+    initialHeight > props.triggerHeight
       ? (needShow.value = true)
       : (needShow.value = false);
     document.addEventListener("scroll", decideShowByIsUseScrollTop);
@@ -161,7 +174,7 @@ onBeforeUnmount((): void => {
 
 <style lang="scss" scoped>
 .wrapper {
-  z-index: 233;
+  z-index: v-bind(displayWeight);
   position: fixed;
   width: v-bind(width);
   height: v-bind(height);
