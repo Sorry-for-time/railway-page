@@ -1,12 +1,12 @@
 <template>
   <nav :class="{ 'when-close': needClose }">
     <div>
-      <p class="fa fa-volume-up"></p>
+      <i class="fa-solid fa-bullhorn"></i>
       <span>最新发布</span>
     </div>
 
     <div>
-      <p class="fa fa-phone"></p>
+      <i class="fa-solid fa-phone-flip"></i>
       <span>联系客服</span>
     </div>
 
@@ -35,12 +35,12 @@
         </div>
       </transition>
 
-      <p class="fa fa-qrcode"></p>
+      <i class="fa-solid fa-qrcode"></i>
       <span>APP下载</span>
     </div>
 
     <div @click="close">
-      <p class="fa fa-close"></p>
+      <i class="fa-solid fa-xmark"></i>
       <span>关闭</span>
     </div>
   </nav>
@@ -157,7 +157,10 @@ nav {
   }
 
   div {
-    display: block;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 8px;
     z-index: 666;
     width: 100%;
@@ -165,14 +168,13 @@ nav {
     border-radius: 2px;
     background-color: hsl(0, 0%, 94%);
     box-shadow: 0 0 3px hsla(0, 0%, 0%, 0.452);
-
     transition: 200ms ease-out;
 
     &:hover {
       transform: translateY(-3px);
       box-shadow: 0 0 8px white;
 
-      p,
+      i,
       span {
         transform: scale(1.02);
         color: hsla(209, 100%, 37%, 0.801);
@@ -180,23 +182,17 @@ nav {
       }
     }
 
-    p {
-      margin: 0 auto;
-      padding-top: 10px;
-      display: block;
-      width: 25px;
-      color: hsl(0, 0%, 40%);
-      font-size: 25px;
+    i {
+      color: hsl(0, 0%, 50%);
+      font-size: 22px;
     }
 
     span {
-      margin: 0 auto;
-      margin-top: 5px;
-      display: block;
+      text-align: center;
+      margin-top: 3px;
       width: 35px;
       font-size: 15px;
       color: hsl(0, 0%, 40%);
-      font-size: 14px;
     }
   }
 }

@@ -15,9 +15,10 @@
             v-model.trim="searchValue"
             @keydown.enter="goSearch"
           />
-          <button @click="goSearch">
-            <i class="fa fa-search"></i>
-          </button>
+          <button
+            class="fa-solid fa-magnifying-glass"
+            @click="goSearch"
+          ></button>
         </div>
 
         <!-- 帮助信息 -->
@@ -274,6 +275,7 @@ header {
         }
         .fn-area {
           display: inline-block;
+
           span {
             margin-left: 10px;
             color: rgba(0, 0, 0, 0.664);
