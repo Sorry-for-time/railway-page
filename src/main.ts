@@ -13,9 +13,12 @@ import "@/mock/mock-config";
 // 引入 svg 图标库
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import "@/assets/scss/base.scss";
-import "@node/font-awesome/scss/font-awesome.scss";
 import "@node/nprogress/nprogress.css";
 import "@scss/rewrite-plugin-style/rewrite-nprogress.scss";
+
+// 引入 使用到的 font-awesome 文件
+import "@node/@fortawesome/fontawesome-free/scss/solid.scss";
+import "@node/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 const rootNode: App<Element> = createApp(RootContainer);
 Reflect.set(rootNode.config, "$api", apiManager);
