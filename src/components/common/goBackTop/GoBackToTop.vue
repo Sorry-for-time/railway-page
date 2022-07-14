@@ -1,6 +1,11 @@
 <template>
   <transition name="zoom">
-    <div class="wrapper" ref="point" v-show="needShow">
+    <div
+      class="wrapper"
+      @click="props.buttonClickFn()"
+      ref="point"
+      v-show="needShow"
+    >
       <slot>
         <span>
           <i class="fa fa-arrow-up"></i>
@@ -13,34 +18,70 @@
 <script setup lang="ts">
 import { throttle } from "lodash";
 import { onBeforeUnmount, onMounted, ref, Ref } from "vue";
+
 const props = defineProps({
+  /**
+   * @description 容器的默认宽度
+   */
   width: {
     type: String,
-    default: "40px",
+    default: "45px",
   },
+  /**
+   * @description 容器的默认高度
+   */
   height: {
     type: String,
-    default: "40px",
+    default: "45px",
   },
+  /**
+   * @description 容器离右侧的距离
+   */
   right: {
-    type: String,
-    default: "12px",
-  },
-  bottom: {
     type: String,
     default: "20px",
   },
+
+  /**
+   * @description 容器离底部的距离
+   */
+  bottom: {
+    type: String,
+    default: "180px",
+  },
+  /**
+   * @description 是否在鼠标滚轮向上滑动的时候隐藏容器, 与 {needShowHeight} 配置互斥
+   */
   hideWhenScrollTop: {
     type: Boolean,
     default: false,
   },
+  /**
+   * @description 容器距达到指定页面位置才显示的高度, 与 {hideWhenScrollTop} 配置互斥
+   */
   needShowHeight: {
     type: Number,
     default: 500,
   },
+  /**
+   * @description 所有绑定回调默认的节流触发阈值
+   */
   waitTime: {
     type: Number,
     default: 400,
+  },
+
+  /**
+   * @description 点击容器时触发的回调, 默认为上滚
+   */
+  buttonClickFn: {
+    type: Function,
+    default: (): void => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
   },
 });
 
@@ -75,18 +116,7 @@ const decideShowByIsUseScrollTop = throttle((): void => {
   }
 }, props.waitTime);
 
-/**
- * @description 点击按钮平滑滚动(取决于浏览器支持)回顶部
- */
-const buttonClickFn = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
-
 onMounted(async (): Promise<void> => {
-  const child: HTMLElement = point.value?.firstElementChild as HTMLElement; // 取得子元素
   if (props.hideWhenScrollTop) {
     document.addEventListener("scroll", decideShowByPropHeight);
   } else {
@@ -97,14 +127,11 @@ onMounted(async (): Promise<void> => {
       : (needShow.value = false);
     document.addEventListener("scroll", decideShowByIsUseScrollTop);
   }
-
-  child.addEventListener("click", buttonClickFn);
 });
 
 onBeforeUnmount((): void => {
   document.removeEventListener("scroll", decideShowByPropHeight);
   document.removeEventListener("scroll", decideShowByIsUseScrollTop);
-  window.removeEventListener("click", buttonClickFn);
 });
 </script>
 
@@ -141,18 +168,20 @@ onBeforeUnmount((): void => {
   right: v-bind(right);
   bottom: v-bind(bottom);
 
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-items: center;
 
-  border-radius: 6px;
-  box-shadow: 0 0 4px black;
-  background-color: orange;
+  border-radius: 8px;
+  box-shadow: 0 0 3px hsla(0, 0%, 0%, 0.288),
+    0 0 3px hsla(0, 0%, 0%, 0.521) inset;
+  background-color: hsla(40, 1%, 47%, 0.377);
+  backdrop-filter: blur(12px);
 
   * {
     flex: 100%;
     text-align: center;
+    text-shadow: 0 0 2px black;
   }
 }
 </style>
