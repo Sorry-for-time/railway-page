@@ -8,7 +8,7 @@
     >
       <slot>
         <span>
-          <i class="fa fa-arrow-up"></i>
+          <i class="fa-solid fa-arrow-up"></i>
         </span>
       </slot>
     </div>
