@@ -135,8 +135,8 @@ onBeforeUnmount((): void => {
 });
 </script>
 
+<!-- default css animation preset, maybe move to a universal style file in future-->
 <style lang="scss" scoped>
-// 路由组件离场动画
 @keyframes zoom {
   0% {
     opacity: 0;
