@@ -1,6 +1,6 @@
 <template>
   <transition name="zoom">
-    <div class="wrapper" ref="point" v-show="needShow">
+    <div class="wrapper" @click="buttonClickFn" ref="point" v-show="needShow">
       <slot>
         <span>
           <i class="fa fa-arrow-up"></i>
@@ -16,19 +16,19 @@ import { onBeforeUnmount, onMounted, ref, Ref } from "vue";
 const props = defineProps({
   width: {
     type: String,
-    default: "40px",
+    default: "45px",
   },
   height: {
     type: String,
-    default: "40px",
+    default: "45px",
   },
   right: {
     type: String,
-    default: "12px",
+    default: "20px",
   },
   bottom: {
     type: String,
-    default: "20px",
+    default: "180px",
   },
   hideWhenScrollTop: {
     type: Boolean,
@@ -78,7 +78,7 @@ const decideShowByIsUseScrollTop = throttle((): void => {
 /**
  * @description 点击按钮平滑滚动(取决于浏览器支持)回顶部
  */
-const buttonClickFn = () => {
+const buttonClickFn = (): void => {
   window.scrollTo({
     top: 0,
     behavior: "smooth",
@@ -86,7 +86,6 @@ const buttonClickFn = () => {
 };
 
 onMounted(async (): Promise<void> => {
-  const child: HTMLElement = point.value?.firstElementChild as HTMLElement; // 取得子元素
   if (props.hideWhenScrollTop) {
     document.addEventListener("scroll", decideShowByPropHeight);
   } else {
@@ -97,14 +96,11 @@ onMounted(async (): Promise<void> => {
       : (needShow.value = false);
     document.addEventListener("scroll", decideShowByIsUseScrollTop);
   }
-
-  child.addEventListener("click", buttonClickFn);
 });
 
 onBeforeUnmount((): void => {
   document.removeEventListener("scroll", decideShowByPropHeight);
   document.removeEventListener("scroll", decideShowByIsUseScrollTop);
-  window.removeEventListener("click", buttonClickFn);
 });
 </script>
 
