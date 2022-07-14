@@ -31,7 +31,6 @@ let imgList: { data: Array<LineDetail> } = reactive({ data: [] });
 onBeforeMount(async () => {
   const result: any = await requestRailwayLinesData();
   if (result.code === 200) {
-    console.log(result);
     imgList.data = result.data;
   }
 });
