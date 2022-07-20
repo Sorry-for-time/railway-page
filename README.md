@@ -10,7 +10,8 @@
 
 ## 当前版本功能
 
-- (`最新`) 使用 fontawesome-free(6.1.1) 代替旧版, 以解决 sass 单位计算的问题
+- (`最新`) 添加 `pinia` 数据持久化基本配置(通过插件, 默认设定存储在 sessionStorage 当中, 可根据需要进行修改)
+- 使用 fontawesome-free(6.1.1) 代替旧版, 以解决 sass 单位计算的问题
   - 您可以根据需要修改 `main.ts` 下引入的依赖文件, 我只引入了 `solid` 样式
 - 添加返回顶部按钮通用组件, 包含默认动画, 已默认设置常规滚动处理的回调, 且允许调整众多参数
 - 添加一个简单的疫情可视化图表展示 感谢 [小满 zs 的教程]("https://www.bilibili.com/video/BV1dS4y1y7vd?p=70&spm_id_from=333.880.my_history.page.click&vd_source=68720e34574ae6c7d6a143d6c92bdac7")
@@ -54,6 +55,9 @@ npm run build
 
 <h3>疫情可视化简单展示</h3>
 <img src=".assets/echarts-map-example.png" alt="图片貌似没加载出来..." width="80%" />
+
+<h3>pinia 数据持久化基本配置</h3>
+<img src=".assets/pinia-data-store.png" alt="图片貌似没加载出来..." width="80%" />
 
 <h3>图片懒加载配置</h3>
 <img src=".assets/loading-hint.png" alt="图片貌似没加载出来..." width="80%" />
