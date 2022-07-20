@@ -15,7 +15,7 @@ type CityDetail = Array<Partial<StatisGradeCityDetail>>;
 /**
  * @description 获取地图数据
  */
-export const useMapData = defineStore("mapData", {
+export const useMapData = defineStore("map-data", {
   state: () => {
     return {
       list: <OptionMapDataProperties>{},
@@ -46,5 +46,10 @@ export const useMapData = defineStore("mapData", {
       this.chinaTotal = this.list.data?.diseaseh5Shelf.chinaTotal!;
       this.cityDetail = this.list.data?.statisGradeCityDetail.slice(0, 10)!;
     },
+  },
+
+  persist: {
+    storage: window.sessionStorage,
+    key: "map-data",
   },
 });
