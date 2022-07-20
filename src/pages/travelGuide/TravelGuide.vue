@@ -68,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, Ref } from "vue";
+import { onActivated, onMounted, ref, Ref } from "vue";
 import { useMapData } from "@/store/useMapData";
 import * as echarts from "echarts";
 import { EChartsType } from "echarts";
@@ -86,9 +86,11 @@ function initEcharts(domElement: HTMLElement): EChartsType {
   return echarts.init(domElement);
 }
 
+let mapChart: EChartsType;
+let pieChart: EChartsType;
 onMounted(async (): Promise<void> => {
-  const mapChart = initEcharts(boxCenter.value!);
-  const pieChart = initEcharts(pie.value!);
+  mapChart = initEcharts(boxCenter.value!);
+  pieChart = initEcharts(pie.value!);
 
   // 开启加载提示
   mapChart.showLoading();
@@ -273,6 +275,13 @@ onMounted(async (): Promise<void> => {
       mapChart.resize();
     }, 80)
   );
+});
+
+onActivated(() => {
+  // resize charts
+  if (mapChart) {
+    mapChart.resize();
+  }
 });
 </script>
 
