@@ -49,6 +49,8 @@ const imgList = reactive([
   height: 490px;
   margin: 0;
   text-align: center;
+  width: 100%;
+  object-fit: cover;
 }
 
 .el-carousel__item:nth-child(2n) {
