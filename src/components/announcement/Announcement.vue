@@ -89,7 +89,12 @@ onBeforeMount(async (): Promise<void> => {
       font-size: 16px;
       font-weight: 500;
       background-color: hsl(240, 19%, 95%);
-      cursor: pointer;
+      transition: all ease-out 180ms;
+
+      &:hover {
+        background-color: hsla(211, 97%, 61%, 0.774);
+        color: hsla(0, 0%, 100%, 0.63);
+      }
 
       &.when-active {
         background-color: hsl(211, 97%, 61%);
