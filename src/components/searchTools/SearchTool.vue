@@ -65,9 +65,21 @@ function changeSelectItem(str: string): void {
         width: 100%;
         margin-left: 3px;
         height: 100%;
+        transition: all ease-out 200ms;
 
+        // 鼠标悬浮时的效果提示
+        &:hover {
+          background-color: hsla(0, 0%, 100%, 0.555);
+
+          span {
+            color: hsl(211, 97%, 61%);
+          }
+        }
+
+        // 当被激活时候的样式
         &.when-active {
           background-color: hsl(0, 0%, 100%);
+
           span {
             color: hsl(211, 97%, 61%);
           }
