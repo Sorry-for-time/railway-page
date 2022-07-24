@@ -5,9 +5,10 @@ import { customRef, Ref } from "vue";
  * @param rawValue
  * @param delay
  * @see https://staging-cn.vuejs.org/api/reactivity-advanced.html#customref
+ * @author {Shalling}
  * @returns {Ref<T>}
  */
-export const DebounceRef = <T>(rawValue: T, delay: number = 200): Ref<T> => {
+export function DebounceRef<T>(rawValue: T, delay: number = 200): Ref<T> {
   let timer: number;
   return customRef((track, trigger) => {
     return {
@@ -26,16 +27,17 @@ export const DebounceRef = <T>(rawValue: T, delay: number = 200): Ref<T> => {
       },
     };
   });
-};
+}
 
 /**
  * @description 自定义节流 Ref
  * @param rawValue
  * @param delay
  * @see https://staging-cn.vuejs.org/api/reactivity-advanced.html#customref
+ * @author {Shalling}
  * @returns {Ref<T>}
  */
-export const ThrottleRef = <T>(rawValue: T, delay: number = 200): Ref<T> => {
+export function ThrottleRef<T>(rawValue: T, delay: number = 200): Ref<T> {
   let isLock: boolean = false;
   return customRef((track, trigger) => {
     return {
@@ -56,4 +58,4 @@ export const ThrottleRef = <T>(rawValue: T, delay: number = 200): Ref<T> => {
       },
     };
   });
-};
+}
