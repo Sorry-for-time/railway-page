@@ -6,14 +6,6 @@
   box-sizing: border-box;
   text-rendering: optimizeLegibility; /* 设置文本抗锯齿, 如果可用的话 */
   font-family: "Microsoft YaHei", "Heiti SC", Arial, Helvetica, sans-serif;
-  // 统一文字主色调
-  color: hsl(0, 0%, 100%);
-  cursor: default;
-}
-
-html,
-body {
-  background-color: hsl(0, 0%, 100%);
 }
 
 // 设置 webkit 内核系浏览器的默认滚动条样式

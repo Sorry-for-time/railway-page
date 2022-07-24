@@ -23,14 +23,13 @@
 
     <!-- 展示的路由页面 -->
     <div class="right-show-page">
-      <Calendar />
+      <el-calendar />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Calendar from "@/components/calendar/Calendar.vue";
 
 const currentShow = ref("ticket");
 function changeSelectItem(str: string): void {
@@ -87,12 +86,19 @@ function changeSelectItem(str: string): void {
       }
     }
   }
+
   .right-show-page {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    .el-date-table-cell__text {
-      color: black !important;
+    height: 100%;
+
+    ::v-deep(.el-calendar__body) {
+      height: 300px;
+      overflow: hidden !important;
+      padding: 26px 3px;
+
+      .el-calendar-day {
+        height: auto;
+        text-align: center;
+      }
     }
   }
 }

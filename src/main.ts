@@ -7,6 +7,8 @@ import lazyPlugin from "vue3-lazy";
 import { apiManager } from "@/network/network";
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
+import ElementPlus from "element-plus";
+import zhCn from "element-plus/es/locale/lang/zh-cn";
 
 // 运行 mock 配置文件
 import "@/mock/mock-config";
@@ -31,6 +33,9 @@ rootNode.use(router);
 const piniaInstance = createPinia();
 piniaInstance.use(piniaPluginPersistedstate);
 rootNode.use(piniaInstance);
+rootNode.use(ElementPlus, {
+  locale: zhCn,
+});
 // 注册 elementPlus 组件
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   rootNode.component(key, component);
