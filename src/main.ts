@@ -10,6 +10,8 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import ElementPlus from "element-plus";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 
+import "./index.css";
+
 // 运行 mock 配置文件
 import "@/mock/mock-config";
 
