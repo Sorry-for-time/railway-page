@@ -1,34 +1,36 @@
 <template>
-  <!-- 页首 -->
-  <Suspense>
-    <template #default>
-      <PageHeader />
-    </template>
-  </Suspense>
+  <div class="container">
+    <!-- 页首 -->
+    <Suspense>
+      <template #default>
+        <PageHeader />
+      </template>
+    </Suspense>
 
-  <!-- 内容主体 -->
-  <router-view v-slot="{ Component }">
-    <transition name="fade">
-      <keep-alive :max="10" :exclude="['Login', 'Register']">
-        <component :is="Component" :key="$route.fullPath" />
-      </keep-alive>
-    </transition>
-  </router-view>
+    <!-- 内容主体 -->
+    <router-view v-slot="{ Component }">
+      <transition name="fade">
+        <keep-alive :max="10" :exclude="['Login', 'Register']">
+          <component :is="Component" :key="$route.fullPath" />
+        </keep-alive>
+      </transition>
+    </router-view>
 
-  <!-- 页脚 -->
-  <Suspense>
-    <template #default>
-      <PageFooter />
-    </template>
-    <template #fallback>
-      <LoadingCommonHint />
-    </template>
-  </Suspense>
+    <!-- 页脚 -->
+    <Suspense>
+      <template #default>
+        <PageFooter />
+      </template>
+      <template #fallback>
+        <LoadingCommonHint />
+      </template>
+    </Suspense>
 
-  <!-- 右侧工具栏 -->
-  <HelpBar v-if="isNeedShowSideBar" />
+    <!-- 右侧工具栏 -->
+    <HelpBar v-if="isNeedShowSideBar" />
 
-  <GoBackToTop :hide-when-wheel-back="false" />
+    <GoBackToTop :hide-when-wheel-back="false" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -76,7 +78,7 @@ watchEffect(() => {
 
 <style lang="scss">
 #app {
-  width: clamp(1200px, 100%, 2000px);
+  width: 100%;
   background: white;
 }
 </style>

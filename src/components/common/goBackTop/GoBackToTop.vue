@@ -25,7 +25,7 @@ const props = defineProps({
    */
   width: {
     type: String,
-    default: "45px",
+    default: "60px",
   },
 
   /**
@@ -33,7 +33,7 @@ const props = defineProps({
    */
   height: {
     type: String,
-    default: "45px",
+    default: "60px",
   },
 
   /**
@@ -185,16 +185,19 @@ onBeforeUnmount((): void => {
   align-items: center;
   justify-items: center;
 
-  border-radius: 8px;
-  box-shadow: 0 0 3px hsla(0, 0%, 0%, 0.288),
-    0 0 3px hsla(0, 0%, 0%, 0.521) inset;
-  background-color: hsla(40, 1%, 47%, 0.377);
+  border-radius: 50%;
+  box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.678),
+    0 0 8px hsla(0, 0%, 71%, 0.39) inset;
+  background-color: hsla(0, 0%, 100%, 0.575);
   backdrop-filter: blur(12px);
+  border: 1px solid rgb(241, 241, 241);
 
   * {
     flex: 100%;
     text-align: center;
-    text-shadow: 0 0 2px black;
+    text-shadow: 0 0 2px rgb(46, 46, 46);
+    color: hsl(0, 0%, 100%);
+    font-weight: 900;
   }
 }
 </style>
