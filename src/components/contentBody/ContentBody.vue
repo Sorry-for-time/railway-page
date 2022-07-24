@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="container wrapper">
     <Suspense>
       <template #default>
         <ServiceListVue />
