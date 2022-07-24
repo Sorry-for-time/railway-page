@@ -17,6 +17,7 @@
           />
           <button
             class="fa-solid fa-magnifying-glass"
+            style="color: white"
             @click="goSearch"
           ></button>
         </div>

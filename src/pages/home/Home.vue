@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="content">
     <Suspense>
+      <!-- 轮播图 -->
       <template #default>
         <Carousel />
       </template>
@@ -10,6 +11,7 @@
       </template>
     </Suspense>
 
+    <!-- 内容 -->
     <Suspense>
       <template #default>
         <ContentBody />
@@ -40,3 +42,9 @@ const ContentBody = defineAsyncComponent(
   () => import("@/components/contentBody/ContentBody.vue")
 );
 </script>
+
+<style lang="scss" scoped>
+.content {
+  width: 100%;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="carousel">
     <!-- 轮播图 -->
     <el-carousel trigger="click" height="490px">
       <el-carousel-item v-for="(item, key) in imgList" :key="key">
@@ -30,7 +30,8 @@ const imgList = reactive([
 </script>
 
 <style lang="scss" scoped>
-.container {
+.carousel {
+  width: 100%;
   position: relative;
 
   .fix-tool {

@@ -89,15 +89,16 @@ function changeSelectItem(str: string): void {
 
   .right-show-page {
     height: 100%;
+    display: flex;
 
-    ::v-deep(.el-calendar__body) {
-      height: 300px;
-      overflow: hidden !important;
-      padding: 26px 3px;
+    ::v-deep(.el-calendar) {
+      height: 100%;
 
       .el-calendar-day {
-        height: auto;
-        text-align: center;
+        display: flex;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
