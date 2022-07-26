@@ -1,7 +1,7 @@
 <template>
   <section class="box">
     <div class="box-left">
-      <div class="top-show">
+      <div class="top-show text-white">
         <section>
           <div>较上日+ {{ mapDataStore.chinaAdd.localConfirmH5 }}</div>
           <div>{{ mapDataStore.chinaTotal.localConfirm }}</div>
