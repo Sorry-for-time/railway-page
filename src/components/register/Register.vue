@@ -12,14 +12,8 @@
         class="demo-ruleForm"
         status-icon
       >
-        <el-form-item label="Activity name" prop="name">
+        <el-form-item label="账户名称" prop="name">
           <el-input v-model="ruleForm.name" />
-        </el-form-item>
-        <el-form-item label="Activity zone" prop="region">
-          <el-select v-model="ruleForm.region" placeholder="Activity zone">
-            <el-option label="Zone one" value="shanghai" />
-            <el-option label="Zone two" value="beijing" />
-          </el-select>
         </el-form-item>
         <el-form-item label="Activity count" prop="count">
           <el-select-v2
@@ -79,14 +73,14 @@
             <el-radio label="Venue" />
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="Activity form" prop="desc">
+        <el-form-item label="备注信息" prop="desc">
           <el-input v-model="ruleForm.desc" type="textarea" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm(ruleFormRef)">
-            Create
+            创建
           </el-button>
-          <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
+          <el-button @click="resetForm(ruleFormRef)">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -140,7 +134,7 @@ const rules = reactive<FormRules>({
     {
       type: "date",
       required: true,
-      message: "Please pick a date",
+      message: "请选择一个日期",
       trigger: "change",
     },
   ],
@@ -148,7 +142,7 @@ const rules = reactive<FormRules>({
     {
       type: "date",
       required: true,
-      message: "Please pick a time",
+      message: "请选择一个日期",
       trigger: "change",
     },
   ],
@@ -156,7 +150,7 @@ const rules = reactive<FormRules>({
     {
       type: "array",
       required: true,
-      message: "Please select at least one activity type",
+      message: "请至少选择一个类型",
       trigger: "change",
     },
   ],
@@ -232,15 +226,6 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
       color: hsl(0, 0%, 96%);
       font-size: 15px;
       padding: 6px 17px;
-    }
-
-    .demo-ruleForm {
-      background-color: antiquewhite;
-
-      :deep(.set-black) {
-        color: black !important;
-        background-color: black;
-      }
     }
   }
 }
