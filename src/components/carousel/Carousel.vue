@@ -15,14 +15,13 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent } from "vue";
-import { reactive } from "vue";
+import { ref, defineAsyncComponent, Ref } from "vue";
 
 const SearchTools = defineAsyncComponent(
   () => import("@/components/searchTools/SearchTool.vue")
 );
 
-const imgList = reactive([
+const imgList: Ref<Array<string>> = ref([
   "/imgs/banner/banner10.jpg",
   "/imgs/banner/banner12.jpg",
   "/imgs/banner/banner26.jpg",
