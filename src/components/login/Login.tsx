@@ -1,12 +1,16 @@
 import { defineComponent } from "vue";
+import { ElCard } from "element-plus";
 
 export const Login = defineComponent({
   name: "Login",
   setup() {
-    return () => (
-      <section style="background-color: blue; width: 100%; height: 600px; margin-bottom: 100px">
-        123
-      </section>
+    return {};
+  },
+  render() {
+    return (
+      <div
+        style={{ height: "300px", width: "100%", backdropFilter: "blur(12px)" }}
+      ></div>
     );
   },
 });

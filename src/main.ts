@@ -26,6 +26,8 @@ import "@node/@fortawesome/fontawesome-free/scss/solid.scss";
 import "@node/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 const rootNode: App<Element> = createApp(RootContainer);
+rootNode.config.performance = true;
+
 Reflect.set(rootNode.config, "$api", apiManager);
 lazyPlugin.install(rootNode, {
   loading: "/imgs/lazyload-hints/loading.gif",
