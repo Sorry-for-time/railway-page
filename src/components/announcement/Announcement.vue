@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, reactive, ref, Ref } from "vue";
+import { onBeforeMount, reactive, ref, type Ref } from "vue";
 import { requestAnnouncements } from "@/network/apis/apis";
 
 const currentSelect: Ref<number> = ref(0);
