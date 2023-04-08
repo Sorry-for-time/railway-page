@@ -80,16 +80,7 @@ section {
         text-align: center;
       }
 
-      // 这操蛋的精灵图切图位置不按照布局顺序
-      $unit-list: (
-        -40px,
-        -200px,
-        -120px,
-        -160px,
-        -80px,
-        -240px
-      ); /* 各个位置的单位 */
-
+      $unit-list: (-40px, -200px, -120px, -160px, -80px, -240px);
       @each $start in $unit-list {
         $index: index($unit-list, $start);
         &:nth-child(#{$index}) span {

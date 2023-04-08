@@ -68,14 +68,14 @@
 </template>
 
 <script setup lang="ts">
-import { onActivated, onMounted, ref, Ref } from "vue";
+import { Ref, onActivated, onMounted, ref } from "vue";
 import { useMapData } from "@/store/useMapData";
 import * as echarts from "echarts";
 import { EChartsType } from "echarts";
 import { geoCoordMap } from "./geoSimplifyDetails";
 import { nanoid } from "nanoid";
 import "@/assets/region-data/testMapData";
-import { debounce } from "lodash";
+import { debounce } from "lodash-es";
 
 const boxCenter: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(null);
 const pie: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(null);
@@ -273,7 +273,7 @@ onMounted(async (): Promise<void> => {
     "resize",
     debounce(() => {
       mapChart.resize();
-    }, 80)
+    }, 80),
   );
 });
 

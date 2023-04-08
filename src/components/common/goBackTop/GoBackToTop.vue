@@ -1,11 +1,6 @@
 <template>
   <transition name="zoom">
-    <div
-      class="wrapper"
-      @click="props.buttonClickFn()"
-      ref="point"
-      v-show="needShow"
-    >
+    <div class="wrapper" @click="props.buttonClickFn()" ref="point" v-show="needShow">
       <slot>
         <span>
           <i class="fa-solid fa-arrow-up"></i>
@@ -16,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { throttle } from "lodash";
+import { throttle } from "lodash-es";
 import { onBeforeUnmount, onMounted, ref, Ref } from "vue";
 
 const props = defineProps({
@@ -135,9 +130,7 @@ onMounted(async (): Promise<void> => {
   } else {
     // 初始化
     const initialHeight: number = document.documentElement.scrollTop;
-    initialHeight > props.triggerHeight
-      ? (needShow.value = true)
-      : (needShow.value = false);
+    initialHeight > props.triggerHeight ? (needShow.value = true) : (needShow.value = false);
     document.addEventListener("scroll", decideShowByIsUseScrollTop);
   }
 });
@@ -186,8 +179,7 @@ onBeforeUnmount((): void => {
   justify-items: center;
 
   border-radius: 50%;
-  box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.678),
-    0 0 8px hsla(0, 0%, 71%, 0.39) inset;
+  box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.678), 0 0 8px hsla(0, 0%, 71%, 0.39) inset;
   background-color: hsla(0, 0%, 100%, 0.575);
   backdrop-filter: blur(12px);
   border: 1px solid rgb(241, 241, 241);

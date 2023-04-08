@@ -7,7 +7,7 @@
       "@node/*": ["./node_modules/*"],
       "@scss/*": ["./scss/*"]
     },
-    "target": "es2015",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -20,7 +20,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["ESNext", "DOM", "WebWorker"],
     "skipLibCheck": true,
     "experimentalDecorators": true
   },

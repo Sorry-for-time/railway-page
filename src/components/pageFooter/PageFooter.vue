@@ -5,49 +5,31 @@
       <div class="friend-link">
         <span>友情链接</span>
         <div class="friends-logo">
-          <img
-            v-for="(value, index) in friendLinkImgUrls"
-            :key="index"
-            :src="value"
-            alt="图片貌似没有加载出???🐌"
-          />
+          <img v-for="(value, index) in friendLinkImgUrls" :key="index" :src="value" alt="图片貌似没有加载出???🐌" />
         </div>
       </div>
 
       <!-- 二维码区域 -->
       <div class="qr-code-area">
-        <div
-          class="qr-code-item"
-          v-for="(item, index) in qrCodeImgUrls"
-          :key="index"
-        >
+        <div class="qr-code-item" v-for="(item, index) in qrCodeImgUrls" :key="index">
           <span class="title">{{ item.title }}</span>
           <img :src="item.imgUrl" alt="图片貌似没加载出来???🥲" />
         </div>
       </div>
 
       <!-- 提示信息 -->
-      <div class="hint-message">
-        官方APP下载，目前铁路未授权其他网站或APP开展类似服务内容，敬请广大用户注意。
-      </div>
+      <div class="hint-message">官方APP下载，目前铁路未授权其他网站或APP开展类似服务内容，敬请广大用户注意。</div>
     </div>
 
     <!-- 版权信息 -->
     <div class="bottom">
       <section>
-        <p>
-          版权所有©2008-2022&nbsp;&nbsp;
-          中国铁道科学研究院集团有限公司&nbsp;&nbsp; 技术支持：铁旅科技有限公司
-        </p>
+        <p>版权所有©2008-2022&nbsp;&nbsp; 中国铁道科学研究院集团有限公司&nbsp;&nbsp; 技术支持：铁旅科技有限公司</p>
 
         <p>
-          <img
-            src="/imgs/footer/other/10018.png"
-            alt="loading..."
-            style="height: 15px"
-          />
-          京公网安备&nbsp; 11010802038392号 &nbsp;|&nbsp; 京ICP备05020493号-4 |
-          &nbsp;&nbsp;ICP证：&nbsp; &nbsp;京B2-20202537
+          <img src="/imgs/footer/other/10018.png" alt="loading..." style="height: 15px" />
+          京公网安备&nbsp; 11010802038392号 &nbsp;|&nbsp; 京ICP备05020493号-4 | &nbsp;&nbsp;ICP证：&nbsp;
+          &nbsp;京B2-20202537
         </p>
       </section>
       <img src="/imgs/footer/other/footer-slh.jpg" alt="" />
@@ -192,8 +174,7 @@ const qrCodeImgUrls: Array<{
         overflow: hidden;
         border-width: 6px;
         border-style: dashed solid dashed dashed;
-        border-color: transparent hsla(0, 0%, 73%, 0.541) transparent
-          transparent;
+        border-color: transparent hsla(0, 0%, 73%, 0.541) transparent transparent;
         border-left: none;
       }
     }

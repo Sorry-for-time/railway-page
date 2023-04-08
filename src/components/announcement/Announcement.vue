@@ -53,7 +53,7 @@ onBeforeMount(async (): Promise<void> => {
   } finally {
     console.log(
       `%c${"=".repeat(12)} ALL DONE ${"=".repeat(12)}`,
-      "background: purple; padding: 2px; border-radius: 3px"
+      "background: purple; padding: 2px; border-radius: 3px",
     );
   }
 });

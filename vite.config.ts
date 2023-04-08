@@ -37,8 +37,10 @@ export default defineConfig({
       "@scss": getPath("./scss"),
     },
   },
-
   server: {
     port: 3000,
+  },
+  build: {
+    minify: "esbuild",
   },
 });
