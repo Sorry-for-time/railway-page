@@ -24,35 +24,32 @@
 - 使用 fontawesome-free(6.1.1) 代替旧版, 以解决 sass 单位计算的问题
   - 您可以根据需要修改 `main.ts` 下引入的依赖文件, 我只引入了 `solid` 样式
 - 添加返回顶部按钮通用组件, 包含默认动画, 已默认设置常规滚动处理的回调, 且允许调整众多参数
-- 添加一个简单的疫情可视化图表展示 感谢 [小满 zs 的教程]("https://www.bilibili.com/video/BV1dS4y1y7vd?p=70&spm_id_from=333.880.my_history.page.click&vd_source=68720e34574ae6c7d6a143d6c92bdac7")
-  - 大致的变更部分:
-    1. 在原有的基础上添加了一些小修改(在视图大小发生更改时重新渲染地图, 且套了一层节流)
-    2. 受限于现有布局, 移除了折线图
+- ~~添加一个简单的疫情可视化图表展示 感谢 [小满 zs 的教程]("https://www.bilibili.com/video/BV1dS4y1y7vd?p=70&spm_id_from=333.880.my_history.page.click&vd_source=68720e34574ae6c7d6a143d6c92bdac7")~~ (接口已失效, 请自行查找新的并替换)
 - 使用 `mockjs` 模拟部分测试数据
 - 主页面路由组件的切换的过渡效果(视觉上更加友好)
 - 可复用的多彩背景待开发提示页面组件
 - 更加视觉友好的错误页提示
 - 部分样式优化
-- 图片懒加载设置, 路由组件缓存上限设置-
+- 图片懒加载设置, 路由组件缓存上限设置
 
 ## note:
 
-- **项目持续更新中(未完)...**
-- 这个项目要求你必须已经安装好了 nodejs 环境(>=12)
-- 且已经安装好了 vue-cli 脚手架工具(>=5.0)
-- 在一切无误后边可以进行本地测试和打包部署了
+- ~~随缘更新(忙碌)...~~
+- Environment Require
+  - Node >= 16
+  - pnpm >= 7
 
 ```sh
 cd railway-page
 
 # 安装项目依赖
-npm install
+pnpm i
 
 # 启动开发预览服务器
-npm run dev
+pnpm run dev
 
 # 打包构建
-npm run build
+pnpm run build
 ```
 
 - 此外你也可以修改 `package.json` 文件下的 `scripts` 区域以更改指令
@@ -102,4 +99,4 @@ npm run build
 
 # Thanks
 
-- [小满 zs](https://blog.csdn.net/qq1195566313?type=blog)
+- [小满 zs](https://blog.csdn.net/qq1195566313?type=blog) tutorial
