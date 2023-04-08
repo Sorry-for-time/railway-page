@@ -1,8 +1,8 @@
 <template>
-  <header>
+  <header v-show="needShow">
     <div class="header-show">
       <!-- logo -->
-      <img src="/imgs/logo.jpg" alt="图片貌似没加载出来???🙃" />
+      <img class="logo" src="/imgs/logo.jpg" alt="图片貌似没加载出来???🙃" />
 
       <!-- 右侧区域 -->
       <div class="header-right">
@@ -15,9 +15,11 @@
             v-model.trim="searchValue"
             @keydown.enter="goSearch"
           />
-          <button @click="goSearch">
-            <i class="fa fa-search"></i>
-          </button>
+          <button
+            class="fa-solid fa-magnifying-glass"
+            style="color: white"
+            @click="goSearch"
+          ></button>
         </div>
 
         <!-- 帮助信息 -->
@@ -30,8 +32,8 @@
 
           <!-- 登录和注册 -->
           <div class="fn-area">
-            <span>登录</span>
-            <span>注册</span>
+            <span @click="goLogin">登录</span>
+            <span @click="goRegister">注册</span>
           </div>
         </div>
       </div>
@@ -39,22 +41,40 @@
 
     <!-- 主要分类 -->
     <nav class="type">
-      <span v-for="(value, index) in majorCategory" :key="index">
-        {{ value }}
+      <span
+        v-for="(value, index) in majorCategory"
+        :key="index"
+        :class="{ 'when-active': value.name.includes(route.path) }"
+        @click="
+          goPath(value.title);
+          currentItem = value.name;
+        "
+      >
+        {{ value.title }}
       </span>
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive, ref, watchEffect } from "vue";
+import { useRoute, useRouter, Router } from "vue-router";
+
+const route = useRoute();
+const currentItem = ref("");
+const needShow = ref(true);
+
+watchEffect((): void => {
+  currentItem.value = route.path;
+  needShow.value = route.path !== "/login";
+});
 
 const searchValue = ref("");
 
 /**
  * @description 根据已经输入内容进行搜索
  */
-function goSearch() {
+function goSearch(): void {
   // 在此写你的业务逻辑(网络请求等)
   console.log(searchValue.value);
 }
@@ -62,16 +82,89 @@ function goSearch() {
 /**
  * @description 主要分类关键词
  */
-const majorCategory: Array<string> = reactive([
-  "首页",
-  "车票",
-  "团购服务",
-  "会员服务",
-  "站车服务",
-  "商旅服务",
-  "出行指南",
-  "信息查询",
+const majorCategory: Array<{ name: string; title: string }> = reactive([
+  {
+    name: "/home",
+    title: "首页",
+  },
+  {
+    name: "/ticket",
+    title: "车票",
+  },
+  {
+    name: "/group-service",
+    title: "团购服务",
+  },
+  {
+    name: "/vip-service",
+    title: "会员服务",
+  },
+  {
+    name: "/station-car-service",
+    title: "站车服务",
+  },
+  {
+    name: "/business-service",
+    title: "商旅服务",
+  },
+  {
+    name: "/travel-guide",
+    title: "出行指南",
+  },
+  {
+    name: "/detail-search",
+    title: "信息查询",
+  },
 ]);
+
+const router: Router = useRouter();
+
+/**
+ * @description 跳转到指定的页面
+ */
+function goPath(targetPathMapName: string): void {
+  let path: string = "/";
+  switch (targetPathMapName) {
+    case "首页":
+      path = "/home";
+      break;
+    case "车票":
+      path = "/ticket";
+      break;
+    case "团购服务":
+      path = "/group-service";
+      break;
+    case "会员服务":
+      path = "/vip-service";
+      break;
+    case "站车服务":
+      path = "/station-car-service";
+      break;
+    case "商旅服务":
+      path = "/business-service";
+      break;
+    case "出行指南":
+      path = "/travel-guide";
+      break;
+    case "信息查询":
+      path = "/detail-search";
+      break;
+    default:
+      break;
+  }
+  router.push(path);
+}
+
+/**
+ * @description 跳转到登录页面
+ */
+function goLogin(): void {
+  router.push("/login");
+}
+
+function goRegister(): void {
+  router.push("/register");
+}
 </script>
 
 <style lang="scss" scoped>
@@ -80,27 +173,60 @@ header {
   height: 120px;
   display: grid;
   grid-template-rows: 80px 40px;
+  grid-template-columns: 1fr;
   justify-items: center;
   background-color: white;
   overflow: hidden;
 
+  @media screen and (max-width: 1300px) {
+    height: 160px;
+    grid-template-rows: 120px 40px;
+
+    .header-show {
+      width: 98%;
+    }
+  }
+
+  @media screen and (max-width: 1185px) {
+    height: 120px;
+    grid-template-rows: 80px 40px;
+
+    .header-show {
+      .header-right {
+        grid-template-columns: 1fr !important;
+
+        .search-container {
+          width: 100%;
+        }
+        .help-message {
+          display: none;
+        }
+      }
+    }
+  }
+
   .header-show {
-    width: calc(100% - 700px);
+    width: 60%;
     display: grid;
     grid-template-columns: 200px calc(100% - 200px);
     align-items: center;
+    justify-content: center;
+    justify-items: center;
 
     .header-right {
       height: 100%;
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      justify-items: center;
       align-items: center;
 
       // 搜索框和按钮
       .search-container {
-        height: 30px;
+        text-align: right;
         margin-left: 40px;
+        height: 30px;
         width: 100%;
 
         input[type="text"] {
@@ -109,7 +235,7 @@ header {
           color: black;
           border: none;
           outline: none;
-          width: 350px;
+          width: calc(100% - 50px);
           height: 28px;
           box-shadow: 0 0 2px gray;
 
@@ -136,6 +262,8 @@ header {
 
       // 帮助信息
       .help-message {
+        margin-left: 20px;
+
         nav {
           display: inline-block;
           span {
@@ -148,6 +276,7 @@ header {
         }
         .fn-area {
           display: inline-block;
+
           span {
             margin-left: 10px;
             color: rgba(0, 0, 0, 0.664);
@@ -182,7 +311,7 @@ header {
         background-color: hsl(214, 83%, 57%);
       }
 
-      &:nth-child(1) {
+      &.when-active {
         background-color: hsl(215, 77%, 52%);
       }
     }

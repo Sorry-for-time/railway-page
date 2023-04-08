@@ -8,8 +8,8 @@
 
     <!-- 列表 -->
     <div class="list">
-      <div class="item" v-for="(value, index) in imgList" :key="index">
-        <img :src="value.imgUrl" alt="" />
+      <div class="item" v-for="(value, index) in imgList.data" :key="index">
+        <img v-lazy="value.imgUrl" alt="图片加载错误" />
         <div class="title">{{ value.description }}</div>
         <div class="price"><span>¥</span>{{ value.price }}</div>
       </div>
@@ -18,62 +18,22 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { onBeforeMount, reactive } from "vue";
+import { requestRailwayLinesData } from "@/network/apis/apis";
 
-interface LineDetail {
+type LineDetail = {
   imgUrl: string;
   description: string;
   price: number;
-}
+};
 
-const imgList: Array<LineDetail> = reactive([
-  {
-    imgUrl: "imgs/railway-line/10059.jpg",
-    description: "环西部火车游” 高品质旅游版专线列车",
-    price: 2560,
-  },
-  {
-    imgUrl: "imgs/railway-line/10060.jpg",
-    description: "环西部火车游” 陇上江南·行摄山>水陇南三日游",
-    price: 930,
-  },
-
-  {
-    imgUrl: "imgs/railway-line/10061.jpg",
-    description: "环西部火车游”华夏寻根·人文始祖天水两日游",
-    price: 980,
-  },
-
-  {
-    imgUrl: "imgs/railway-line/10062.jpg",
-    description: "环西部火车游”精品旅游线路",
-    price: 980,
-  },
-
-  {
-    imgUrl: "imgs/railway-line/10063.jpg",
-    description: "环西部火车游”美丽甘南三日游",
-    price: 880,
-  },
-
-  {
-    imgUrl: "imgs/railway-line/10064.jpg",
-    description: "环西部火车游” 青海湖、茶卡2日>游",
-    price: 880,
-  },
-
-  {
-    imgUrl: "imgs/railway-line/10065.jpg",
-    description: "“环西部火车游”嘉敦5日游",
-    price: 1260,
-  },
-
-  {
-    imgUrl: "imgs/railway-line/10066.jpg",
-    description: "“环西部火车游” 敦煌一地三日游",
-    price: 1380,
-  },
-]);
+let imgList: { data: Array<LineDetail> } = reactive({ data: [] });
+onBeforeMount(async () => {
+  const result: any = await requestRailwayLinesData();
+  if (result.code === 200) {
+    imgList.data = result.data;
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -158,7 +118,7 @@ section {
           margin-right: 5px;
           font-size: 15px;
           font-weight: 600;
-          color: hsl(30, 100%, 50%);
+          color: inherit;
         }
       }
     }

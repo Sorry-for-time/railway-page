@@ -3,23 +3,31 @@
     "types": ["element-plus/global"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "@node/*": ["node_modules/*"],
-      "/*": ["public/*"]
+      "@/*": ["./src/*"],
+      "@node/*": ["./node_modules/*"],
+      "@scss/*": ["./scss/*"]
     },
-    "target": "es2015",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "allowJs": true,
     "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "skipLibCheck": true
+    "lib": ["ESNext", "DOM", "WebWorker"],
+    "skipLibCheck": true,
+    "experimentalDecorators": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

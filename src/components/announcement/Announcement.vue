@@ -1,16 +1,23 @@
 <template>
   <div class="announcement">
     <div class="category">
-      <span class="when-active">最新发布</span>
-      <span>常见问题</span>
-      <span>信用信息</span>
+      <span
+        v-for="(value, index) in itemTypes"
+        :key="index"
+        :class="{ 'when-active': index === currentSelect }"
+        @click="currentSelect = index"
+      >
+        {{ value }}
+      </span>
     </div>
 
     <div class="message-areas">
-      <section v-for="(value, index) in announcement[0].data" :key="index">
-        <span class="title">{{ value.title }}</span>
-        <span class="time">{{ value.time }}</span>
-      </section>
+      <template v-if="announcement.length !== 0">
+        <section v-for="(value, index) in announcement[0]!.data" :key="index">
+          <span class="title">{{ value.title }}</span>
+          <span class="time">{{ value.time }}</span>
+        </section>
+      </template>
     </div>
 
     <div class="hint">
@@ -20,32 +27,36 @@
 </template>
 
 <script setup lang="ts">
-const announcement = [
-  // 最新发布
-  {
-    description: "newest",
-    data: [
-      { title: "公告", time: "2022-05-31" },
-      { title: "候补购票操作说明", time: "2022-05-31" },
-      { title: "关于调整互联网、电话订票起售时间的公告", time: "2022-05-31" },
-      { title: "公告", time: "2022-05-31" },
-      { title: "公告", time: "2022-05-31" },
-      { title: "公告", time: "2022-05-31" },
-      { title: "公告", time: "2022-05-31" },
-      { title: "公告", time: "2022-05-31" },
-    ],
-  },
-  // 常见问题
-  {
-    title: "description",
-    data: {},
-  },
-  // 信用信息
-  {
-    title: "description",
-    data: {},
-  },
-];
+import { onBeforeMount, reactive, ref, Ref } from "vue";
+import { requestAnnouncements } from "@/network/apis/apis";
+
+const currentSelect: Ref<number> = ref(0);
+const itemTypes: Array<string> = reactive(["最新发布", "常见问题", "信用信息"]);
+
+type AnnouncementData = Partial<
+  Array<{
+    description: string;
+    data: Array<{
+      title: string;
+      time: string;
+    }>;
+  }>
+>;
+
+const announcement: Ref<AnnouncementData> = ref([]);
+
+onBeforeMount(async (): Promise<void> => {
+  try {
+    announcement.value = (await requestAnnouncements()).data;
+  } catch (error) {
+    console.warn("get data error");
+  } finally {
+    console.log(
+      `%c${"=".repeat(12)} ALL DONE ${"=".repeat(12)}`,
+      "background: purple; padding: 2px; border-radius: 3px",
+    );
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -78,7 +89,12 @@ const announcement = [
       font-size: 16px;
       font-weight: 500;
       background-color: hsl(240, 19%, 95%);
-      cursor: pointer;
+      transition: all ease-out 180ms;
+
+      &:hover {
+        background-color: hsla(211, 97%, 61%, 0.774);
+        color: hsla(0, 0%, 100%, 0.63);
+      }
 
       &.when-active {
         background-color: hsl(211, 97%, 61%);

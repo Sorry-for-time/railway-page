@@ -5,48 +5,34 @@
       <div class="friend-link">
         <span>友情链接</span>
         <div class="friends-logo">
-          <img
-            v-for="(value, index) in friendLinkImgUrls"
-            :key="index"
-            :src="value"
-            alt="图片貌似没有加载出???🐌"
-          />
+          <img v-for="(value, index) in friendLinkImgUrls" :key="index" :src="value" alt="图片貌似没有加载出???🐌" />
         </div>
       </div>
 
       <!-- 二维码区域 -->
       <div class="qr-code-area">
-        <div
-          class="qr-code-item"
-          v-for="(item, index) in qrCodeImgUrls"
-          :key="index"
-        >
+        <div class="qr-code-item" v-for="(item, index) in qrCodeImgUrls" :key="index">
           <span class="title">{{ item.title }}</span>
           <img :src="item.imgUrl" alt="图片貌似没加载出来???🥲" />
         </div>
       </div>
 
       <!-- 提示信息 -->
-      <div class="hint-message">
-        官方APP下载，目前铁路未授权其他网站或APP开展类似服务内容，敬请广大用户注意。
-      </div>
+      <div class="hint-message">官方APP下载，目前铁路未授权其他网站或APP开展类似服务内容，敬请广大用户注意。</div>
     </div>
 
     <!-- 版权信息 -->
     <div class="bottom">
-      <p>
-        版权所有©2008-2022 中国铁道科学研究院集团有限公司
-        技术支持：铁旅科技有限公司
-      </p>
-      <p>
-        <img
-          src="imgs/footer/other/10018.png"
-          alt="loading..."
-          style="height: 15px"
-        />
-        京公网安备&nbsp; 11010802038392号 &nbsp;|&nbsp; 京ICP备05020493号-4 |
-        ICP证：&nbsp; &nbsp;京B2-20202537
-      </p>
+      <section>
+        <p>版权所有©2008-2022&nbsp;&nbsp; 中国铁道科学研究院集团有限公司&nbsp;&nbsp; 技术支持：铁旅科技有限公司</p>
+
+        <p>
+          <img src="/imgs/footer/other/10018.png" alt="loading..." style="height: 15px" />
+          京公网安备&nbsp; 11010802038392号 &nbsp;|&nbsp; 京ICP备05020493号-4 | &nbsp;&nbsp;ICP证：&nbsp;
+          &nbsp;京B2-20202537
+        </p>
+      </section>
+      <img src="/imgs/footer/other/footer-slh.jpg" alt="" />
     </div>
   </footer>
 </template>
@@ -55,10 +41,10 @@
 import { reactive } from "vue";
 
 const friendLinkImgUrls: Array<string> = reactive([
-  "imgs/footer/friend-link/link02.png",
-  "imgs/footer/friend-link/link03.png",
-  "imgs/footer/friend-link/link04.png",
-  "imgs/footer/friend-link/link05.png",
+  "/imgs/footer/friend-link/link02.png",
+  "/imgs/footer/friend-link/link03.png",
+  "/imgs/footer/friend-link/link04.png",
+  "/imgs/footer/friend-link/link05.png",
 ]);
 
 /**
@@ -70,19 +56,19 @@ const qrCodeImgUrls: Array<{
 }> = reactive([
   {
     title: "中国铁路官方微信",
-    imgUrl: "imgs/footer/qr-codes/10015.png",
+    imgUrl: "/imgs/footer/qr-codes/10015.png",
   },
   {
     title: "中国铁路官方微博",
-    imgUrl: "imgs/footer/qr-codes/10016.png",
+    imgUrl: "/imgs/footer/qr-codes/10016.png",
   },
   {
     title: "12306 公众号",
-    imgUrl: "imgs/footer/qr-codes/10016.png",
+    imgUrl: "/imgs/footer/qr-codes/10016.png",
   },
   {
     title: "铁路 12306",
-    imgUrl: "imgs/footer/qr-codes/10018.png",
+    imgUrl: "/imgs/footer/qr-codes/10018.png",
   },
 ]);
 </script>
@@ -170,7 +156,11 @@ const qrCodeImgUrls: Array<{
       padding: 9px;
       font-size: 13px;
       color: black;
-      background-color: white;
+      background: scroll no-repeat url("imgs/footer/other/10055.png");
+      background-position: bottom right;
+      object-fit: contain;
+      background-size: 86%;
+      filter: brightness(0.95);
       border: 1px solid hsla(0, 0%, 50%, 0.39);
 
       // 对话框拖尾效果
@@ -184,8 +174,7 @@ const qrCodeImgUrls: Array<{
         overflow: hidden;
         border-width: 6px;
         border-style: dashed solid dashed dashed;
-        border-color: transparent hsla(0, 0%, 73%, 0.541) transparent
-          transparent;
+        border-color: transparent hsla(0, 0%, 73%, 0.541) transparent transparent;
         border-left: none;
       }
     }
@@ -195,15 +184,34 @@ const qrCodeImgUrls: Array<{
     width: 100%;
     height: calc(100% - 194px);
     background-color: hsl(0, 0%, 40%);
+    display: grid;
+    grid-template-columns: 570px 160px;
+    gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
 
-    p {
-      width: 100%;
-      display: inline-block;
-      margin-top: 15px;
-      text-align: center;
-      font-size: 13px;
-      color: hsl(0, 0%, 76%);
-      font-weight: 500;
+    section {
+      height: 100%;
+      display: grid;
+      align-items: center;
+
+      p {
+        flex: 100%;
+        text-align: center;
+        width: 100%;
+        font-size: 13px;
+        color: hsl(0, 0%, 76%);
+        font-weight: 500;
+
+        &:first-child {
+          margin-top: 10px;
+        }
+
+        &:last-child {
+          margin-bottom: 10px;
+        }
+      }
     }
   }
 }
