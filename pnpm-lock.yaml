@@ -24,6 +24,9 @@ devDependencies:
   '@element-plus/icons-vue':
     specifier: ^2.0.5
     version: 2.0.5(vue@3.2.25)
+  '@types/lodash-es':
+    specifier: ^4.17.7
+    version: 4.17.7
   '@types/node':
     specifier: ^17.0.41
     version: 17.0.41
@@ -523,11 +526,9 @@ packages:
     resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
     dependencies:
       '@types/lodash': 4.14.192
-    dev: false
 
   /@types/lodash@4.14.192:
     resolution: {integrity: sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==}
-    dev: false
 
   /@types/mockjs@1.0.6:
     resolution: {integrity: sha512-Yu5YlqbYZyqsd6LjO4e8ONJDN9pTSnciHDcRP4teNOh/au2b8helFhgRx+3w8xsTFEnwr9jtfTVJbAx+eYmlHA==}
