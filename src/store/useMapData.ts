@@ -1,11 +1,11 @@
-import { defineStore } from "pinia";
 import { requestMapData } from "@/network/apis/apis";
+import { defineStore } from "pinia";
 import type {
   Children,
   ChinaAdd,
   ChinaTotal,
   RootObject,
-  StatisGradeCityDetail,
+  StatisGradeCityDetail
 } from "./receivedMapDataTypes";
 
 type OptionMapDataProperties = Partial<RootObject>;

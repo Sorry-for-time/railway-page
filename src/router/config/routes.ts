@@ -1,5 +1,5 @@
-import { RouteRecordRaw } from "vue-router";
 import { Login } from "@/components/login/Login";
+import type { RouteRecordRaw } from "vue-router";
 
 const Register = () => import("@/components/register/Register.vue");
 const Home = () => import("@/pages/home/Home.vue");

@@ -1,5 +1,4 @@
 import { defineComponent } from "vue";
-import { ElCard } from "element-plus";
 
 export const Login = defineComponent({
   name: "Login",

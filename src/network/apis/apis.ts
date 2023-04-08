@@ -1,13 +1,11 @@
-import { AxiosResponse } from "axios";
-import { mockApi } from "../mockInit";
 import { apiManager } from "@/network/network";
+import { type AxiosResponse } from "axios";
+import { mockApi } from "../mockInit";
 
 /**
  * @description 取得线路信息
  */
-export async function requestRailwayLinesData(): Promise<
-  AxiosResponse<any, any>
-> {
+export async function requestRailwayLinesData(): Promise<AxiosResponse<any, any>> {
   return mockApi.get("/railway-lines");
 }
 
@@ -24,6 +22,6 @@ export async function requestAnnouncements(): Promise<AxiosResponse<any, any>> {
  */
 export async function requestMapData(): Promise<AxiosResponse<any, any>> {
   return await apiManager.post(
-    "https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=statisGradeCityDetail,diseaseh5Shelf"
+    "https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=statisGradeCityDetail,diseaseh5Shelf",
   );
 }

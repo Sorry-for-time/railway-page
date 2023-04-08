@@ -16,11 +16,7 @@
           <el-input v-model="ruleForm.name" />
         </el-form-item>
         <el-form-item label="Activity count" prop="count">
-          <el-select-v2
-            v-model="ruleForm.count"
-            placeholder="Activity count"
-            :options="options"
-          />
+          <el-select-v2 v-model="ruleForm.count" placeholder="Activity count" :options="options" />
         </el-form-item>
         <el-form-item label="Activity time" required>
           <el-col :span="11">
@@ -53,16 +49,8 @@
         </el-form-item>
         <el-form-item label="Activity type" prop="type">
           <el-checkbox-group v-model="ruleForm.type">
-            <el-checkbox
-              class="set-black"
-              label="Online activities"
-              name="type"
-            />
-            <el-checkbox
-              class="set-black"
-              label="Promotion activities"
-              name="type"
-            />
+            <el-checkbox class="set-black" label="Online activities" name="type" />
+            <el-checkbox class="set-black" label="Promotion activities" name="type" />
             <el-checkbox label="Offline activities" name="type" />
             <el-checkbox label="Simple brand exposure" name="type" />
           </el-checkbox-group>
@@ -77,9 +65,7 @@
           <el-input v-model="ruleForm.desc" type="textarea" />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm(ruleFormRef)">
-            创建
-          </el-button>
+          <el-button type="primary" @click="submitForm(ruleFormRef)"> 创建 </el-button>
           <el-button @click="resetForm(ruleFormRef)">重置</el-button>
         </el-form-item>
       </el-form>
@@ -94,9 +80,10 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
-import { reactive, ref } from "vue";
 import type { FormInstance, FormRules } from "element-plus";
+import { reactive, ref } from "vue";
+import { useRoute, type RouteLocationNormalizedLoaded } from "vue-router";
+
 const route: RouteLocationNormalizedLoaded = useRoute();
 const ruleFormRef = ref<FormInstance>();
 const ruleForm = reactive({
@@ -161,9 +148,7 @@ const rules = reactive<FormRules>({
       trigger: "change",
     },
   ],
-  desc: [
-    { required: true, message: "Please input activity form", trigger: "blur" },
-  ],
+  desc: [{ required: true, message: "Please input activity form", trigger: "blur" }],
 });
 
 const submitForm = async (formEl: FormInstance | undefined) => {
@@ -214,12 +199,7 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
     overflow: hidden;
     .title {
       background: scroll no-repeat center
-        linear-gradient(
-          to bottom,
-          hsl(202, 67%, 53%) 20%,
-          hsl(204, 68%, 47%) 80%,
-          hsl(202, 67%, 53%) 100%
-        );
+        linear-gradient(to bottom, hsl(202, 67%, 53%) 20%, hsl(204, 68%, 47%) 80%, hsl(202, 67%, 53%) 100%);
 
       border-bottom: 2px solid hsl(195, 74%, 65%);
 

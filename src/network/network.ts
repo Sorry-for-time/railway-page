@@ -1,5 +1,4 @@
-import axios from "axios";
-import { AxiosInstance } from "axios";
+import axios, { type AxiosInstance } from "axios";
 
 const apiManager: AxiosInstance = axios.create({
   baseURL: "/api",

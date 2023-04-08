@@ -1,7 +1,6 @@
 import MockJs from "mockjs";
-
-import RailwayLines from "./railway-lines.json";
 import Announcements from "./announcement.json";
+import RailwayLines from "./railway-lines.json";
 
 // 模拟线路信息
 MockJs.mock("/mock/railway-lines", {

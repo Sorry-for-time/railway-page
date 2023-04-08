@@ -6,7 +6,8 @@
 
 <script setup lang="ts">
 import { ColorfulBackground } from "@/hooks/colorfulBackground";
-import { Ref } from "vue";
+import type { Ref } from "vue";
+
 const currentSelectColorUnits: Ref<string> = ColorfulBackground();
 </script>
 

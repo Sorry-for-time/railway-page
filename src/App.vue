@@ -32,33 +32,21 @@
 </template>
 
 <script setup lang="ts">
-import {
-  defineAsyncComponent,
-  getCurrentInstance,
-  provide,
-  ref,
-  watchEffect,
-} from "vue";
-import { useRoute } from "vue-router";
-import LoadingCommonHint from "@/components/common/loading-hint/LoadingCommonHint.vue";
-import { AxiosInstance } from "axios";
 import GoBackToTop from "@/components/common/goBackTop/GoBackToTop.vue";
+import LoadingCommonHint from "@/components/common/loading-hint/LoadingCommonHint.vue";
+import type { AxiosInstance } from "axios";
+import { defineAsyncComponent, getCurrentInstance, provide, ref, watchEffect } from "vue";
+import { useRoute } from "vue-router";
 
 const App = getCurrentInstance()!;
 const $api: AxiosInstance = Reflect.get(App.appContext.config, "$api");
 provide("$api", $api);
 
-const PageHeader = defineAsyncComponent(
-  () => import("@/components/pageHeader/PageHeader.vue")
-);
+const PageHeader = defineAsyncComponent(() => import("@/components/pageHeader/PageHeader.vue"));
 
-const PageFooter = defineAsyncComponent(
-  () => import("@/components/pageFooter/PageFooter.vue")
-);
+const PageFooter = defineAsyncComponent(() => import("@/components/pageFooter/PageFooter.vue"));
 
-const HelpBar = defineAsyncComponent(
-  () => import("@/components/helpBar/HelpBar.vue")
-);
+const HelpBar = defineAsyncComponent(() => import("@/components/helpBar/HelpBar.vue"));
 
 const route = useRoute();
 

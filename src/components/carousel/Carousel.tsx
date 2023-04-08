@@ -1,4 +1,4 @@
-import { defineComponent, ref, Ref } from "vue";
+import { defineComponent, ref, type Ref } from "vue";
 
 export const Carousel = defineComponent({
   setup() {

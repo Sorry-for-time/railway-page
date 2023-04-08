@@ -12,7 +12,8 @@
 
 <script setup lang="ts">
 import { throttle } from "lodash-es";
-import { onBeforeUnmount, onMounted, ref, Ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
+import type { Ref } from "vue";
 
 const props = defineProps({
   /**
@@ -95,7 +96,7 @@ const props = defineProps({
 
 let prevScrollPos: number = 0; // 当前滚动停留位置
 const needShow: Ref<boolean> = ref<boolean>(false);
-const point: Ref<null | HTMLElement> = ref<HTMLElement | null>(null);
+const point = ref<HTMLElement | null>(null);
 
 /**
  * @description 根据 prop 传递参数决定是否通过设定高度来显示隐藏返回按钮, 与 decideShowByIsUseScrollTop 互斥(二选一)

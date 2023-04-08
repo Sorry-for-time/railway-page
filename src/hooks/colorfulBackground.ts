@@ -1,4 +1,4 @@
-import { onMounted, reactive, Ref, ref } from "vue";
+import { onMounted, reactive, ref, type Ref } from "vue";
 
 // 背景色定义
 interface ColorUnits {

@@ -17,7 +17,7 @@ mockApi.interceptors.response.use(
   },
   (error) => {
     return Promise.reject(new Error(JSON.stringify(error.data)));
-  }
+  },
 );
 
 export { mockApi };

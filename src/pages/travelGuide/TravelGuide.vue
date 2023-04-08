@@ -68,17 +68,17 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, onActivated, onMounted, ref } from "vue";
+import "@/assets/region-data/testMapData";
 import { useMapData } from "@/store/useMapData";
 import * as echarts from "echarts";
-import { EChartsType } from "echarts";
-import { geoCoordMap } from "./geoSimplifyDetails";
-import { nanoid } from "nanoid";
-import "@/assets/region-data/testMapData";
+import { type EChartsType } from "echarts";
 import { debounce } from "lodash-es";
+import { nanoid } from "nanoid";
+import { onActivated, onMounted, ref, type Ref } from "vue";
+import { geoCoordMap } from "./geoSimplifyDetails";
 
-const boxCenter: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(null);
-const pie: Ref<HTMLDivElement | null> = ref<HTMLDivElement | null>(null);
+const boxCenter: Ref<any> = ref<HTMLDivElement | null>(null);
+const pie: Ref<any> = ref<HTMLDivElement | null>(null);
 
 const mapDataStore = useMapData();
 
@@ -88,6 +88,7 @@ function initEcharts(domElement: HTMLElement): EChartsType {
 
 let mapChart: EChartsType;
 let pieChart: EChartsType;
+
 onMounted(async (): Promise<void> => {
   mapChart = initEcharts(boxCenter.value!);
   pieChart = initEcharts(pie.value!);
@@ -269,7 +270,7 @@ onMounted(async (): Promise<void> => {
   mapDataStore.item = cities.filter((v) => v.name === "福建")[0].children;
 
   // 监听窗口的大小改变, 并且进行重绘
-  window.visualViewport.addEventListener(
+  window.visualViewport!.addEventListener(
     "resize",
     debounce(() => {
       mapChart.resize();

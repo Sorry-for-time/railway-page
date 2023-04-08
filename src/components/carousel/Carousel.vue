@@ -15,12 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineAsyncComponent, Ref } from "vue";
+import type { Ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 
-const SearchTools = defineAsyncComponent(
-  () => import("@/components/searchTools/SearchTool.vue")
-);
-
+const SearchTools = defineAsyncComponent(() => import("@/components/searchTools/SearchTool.vue"));
 const imgList: Ref<Array<string>> = ref([
   "/imgs/banner/banner10.jpg",
   "/imgs/banner/banner12.jpg",

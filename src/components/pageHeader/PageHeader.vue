@@ -58,7 +58,7 @@
 
 <script setup lang="ts">
 import { reactive, ref, watchEffect } from "vue";
-import { useRoute, useRouter, Router } from "vue-router";
+import { useRoute, useRouter, type Router } from "vue-router";
 
 const route = useRoute();
 const currentItem = ref("");
