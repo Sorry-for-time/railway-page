@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strict": true,
     "types": ["element-plus/global"],
     "baseUrl": "./",
     "paths": {
@@ -7,22 +8,17 @@
       "@node/*": ["./node_modules/*"],
       "@scss/*": ["./scss/*"]
     },
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
+    "module": "ESNext",
     "jsx": "preserve",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-    "allowJs": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker", "WebWorker.ImportScripts", "Webworker.Iterable"],
+    "target": "ESNext",
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM", "WebWorker"],
-    "skipLibCheck": true,
-    "experimentalDecorators": true
+    "moduleResolution": "node",
+    "preserveValueImports": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [
